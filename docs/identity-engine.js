@@ -1,0 +1,7 @@
+(function(){
+ const E=STAGE_ENGINE,old={apply:E.apply,enemy:E.enemy,special:E.special,action:E.action};
+ E.action=function(s){const a=old.action(s);return {...a,energyRise:s.phase==='boss'&&s.selection.boss.id==='Li'&&a.damage===0?8:0};};
+ E.apply=function(s,r,isNew=false,rng=Math.random){const out=old.apply(s,r,isNew,rng);if(s.phase==='boss'&&['DEFENSE','SHIELD','UTILITY','COMBO_SUPPORT'].includes(r.role)){s.suppressOverload=true;out.soothing=s.selection.boss.id==='Li';}return out;};
+ E.enemy=function(s,rng=Math.random){const action=E.action(s),out=old.enemy(s,rng);out.energyRise=0;if(!out.skipped&&action.energyRise&&s.enemyHp>0){out.suppressed=!!s.suppressOverload;out.energyRise=out.suppressed?0:Math.min(action.energyRise,s.enemyMaxHp-s.enemyHp);s.enemyHp+=out.energyRise;s.suppressOverload=false;}return out;};
+ E.special=function(s,support,rng=Math.random){const low=s.playerHp<=s.difficulty.playerHp*.35,out=old.special(s,support,rng);if(!out)return null;if(support.emergencyHeal&&low){const extra=Math.min(support.emergencyHeal,s.difficulty.playerHp-s.playerHp);s.playerHp+=extra;out.heal+=extra;out.emergency=extra;}if(s.phase==='boss'&&s.selection.boss.id==='Xe'){out.resonance=Math.min(8,s.enemyHp);s.enemyHp-=out.resonance;out.damage+=out.resonance;}if(s.phase==='boss'&&support.defense)s.suppressOverload=true;if(s.phase==='boss'&&s.enemyHp>0&&s.enemyHp<=s.enemyMaxHp*.35&&!s.lowEnergyChanceUsed){s.rescueChance=true;s.lowEnergyChanceUsed=true;}return out;};
+})();

@@ -1,0 +1,35 @@
+.stage-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}.stage-picker button{display:grid;gap:8px}.stage-picker span{font-size:13px}.stage-picker small{font-size:11px}.stage-picker .active,.support-choices .active{border:2px solid #dda02a;background:#fff2c0}
+.game{grid-template-rows:44px 230px 172px minmax(0,1fr)144px}
+#enemy-panel{padding-left:184px;justify-content:center;gap:7px}.enemy-top{height:39px}#enemy-avatar{position:absolute;left:8px;top:34px;width:162px;height:184px}#enemy-avatar img{animation:boss-idle 3s ease-in-out infinite}.enemy-title strong{font-size:19px}.enemy-title small{font-size:13px}.enemy-title{gap:5px}.boss-mode .hp-line{max-width:320px}.enemy-shield,#weakness,#resistance{font-size:12px;line-height:17px}.next{min-height:34px}.calming{background:radial-gradient(ellipse,#68d5d566,transparent 75%)}.calming img{filter:drop-shadow(0 0 7px #5ed0ff)}.boss-enter{animation:boss-enter .8s ease-out}.corrupted img{filter:drop-shadow(0 0 7px #b02e96) saturate(1.15)}.bug{margin:44px auto;transform:scale(1.5)}
+.recipe-card{padding:5px 8px;justify-content:space-between;border:2px solid #6f879f;background:linear-gradient(130deg,#2a3d5a,#17263e);box-shadow:inset 0 0 0 2px #fff2}.recipe-card.weakness{border-color:#ffc953;background:linear-gradient(130deg,#54442e,#17263e)}.role-mark{font-size:17px;line-height:23px;font-weight:900;color:var(--role-color);align-self:flex-start;display:block;text-shadow:0 1px #061429}.recipe-card strong{font-size:24px}.type-role{background:#ffffff18;padding:0 7px;border-radius:5px;font-size:10px}.effect-summary{font-size:12px;font-weight:700}.compound-name{font-size:12px}.identity-badge small{font-size:10px;line-height:13px}
+.support-row{min-height:44px;gap:5px}.support-row button{min-height:44px;white-space:nowrap}.support-row>span:nth-child(2){flex:1}.support-row small{display:block;font-size:10px}#support-portrait{height:40px;width:38px;flex:none}.support-image{display:inline-block;width:100%;height:100%;overflow:hidden;position:relative;border-radius:12px}.support-image img{width:100%;height:100%;object-fit:contain}.ne-portrait img{position:absolute;width:340%;height:340%;max-width:none;left:-142%;top:-106%;object-fit:fill}.ready{background:linear-gradient(130deg,#fff0aa,#ffb85c);color:#402a0d;border:2px solid #e4a135;box-shadow:0 0 10px #ffce65;animation:ready-pulse 1.2s ease-in-out infinite}
+.support-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.support-choices button{display:grid;gap:6px;text-align:center;padding:8px}.support-choices .support-image{width:80px;height:84px;margin:auto}.support-choices small{font-size:11px}.support-choices span:not(.support-image){font-size:11px}#support-go{margin-top:12px;width:100%}
+#reaction-particles{position:fixed;inset:0;pointer-events:none}.reaction-copy{position:absolute;object-fit:contain;filter:drop-shadow(0 0 8px #ffe380);z-index:21;pointer-events:none}#presentation-card{z-index:22;position:relative}.forming{box-shadow:0 0 70px #ffd75d!important;transform:scale(.88)!important}.forming>strong{visibility:hidden}#presentation-card>.support-image{width:180px;height:190px}.is-selected{transform:translateY(-4px);box-shadow:0 0 14px #ffc83b,inset 0 0 0 2px #ffcf4d}.hit{animation:impact .42s ease-in-out}
+@keyframes boss-idle{50%{transform:translateY(-4px) rotate(1deg)}}@keyframes boss-enter{from{transform:scale(.8);opacity:.4}to{transform:scale(1);opacity:1}}@keyframes ready-pulse{50%{box-shadow:0 0 18px #ffbf38}}@keyframes impact{25%{transform:translateX(-4px);filter:brightness(1.3)}75%{transform:translateX(4px)}}
+@media(max-width:600px){
+ .game{grid-template-rows:40px 230px 156px minmax(0,1fr)144px}
+ .battle-hud{grid-template-columns:1.32fr 1fr}
+ #enemy-panel{padding:6px;gap:4px;justify-content:flex-start}
+ .enemy-top{height:35px;margin-left:0}
+ .enemy-title strong{font-size:14px}.enemy-title small{font-size:11px}
+ #enemy-avatar{left:2px;top:51px;width:94px;height:149px}
+ #enemy-panel>.hp-line,#enemy-panel>.enemy-shield,#weakness,#resistance,#enemy-panel>.next{margin-left:90px}
+ #enemy-panel>.hp-line{height:23px;flex-wrap:wrap;gap:2px;position:relative;padding-bottom:10px}
+ #enemy-panel>.hp-line label{font-size:11px}#enemy-hp-text{font-size:12px}#enemy-panel progress{position:absolute;left:0;bottom:0;width:100%}
+ .enemy-shield{line-height:15px;font-size:11px}.enemy-shield>span{display:block}
+ #weakness,#resistance{font-size:11px;line-height:15px}
+ .next{gap:2px;padding:4px;min-height:41px}.next b{font-size:11px;line-height:15px;overflow-wrap:anywhere}
+ #enemy-receipt{margin-top:auto;font-size:12px;line-height:20px;min-height:22px}
+ .player{gap:6px}.player-top strong{font-size:13px}.player-top small{font-size:11px}.player-stats{font-size:11px;flex-wrap:wrap;line-height:16px}.hp-line b{font-size:11px}.receipt{font-size:11px;line-height:17px}#role-receipt{font-size:11px}
+ .recipe-card{flex-basis:174px;gap:1px}.role-mark{font-size:16px;line-height:22px}.recipe-card strong{font-size:22px;line-height:24px}.compound-name{font-size:12px;line-height:16px}.type-role{font-size:10px;line-height:14px}.effect-summary{font-size:11px;line-height:16px}
+ .identity-badge{min-width:56px;padding:1px 4px}.identity-badge small{font-size:9px;line-height:12px}.element-card img{height:calc(100% - 31px);margin-top:29px}
+ .support-row button{font-size:11px;min-height:44px;padding:4px 6px}.support-row{font-size:11px}#support-label b{font-size:11px}#message{min-height:24px}.actions button{font-size:11px}
+ .stage-picker{gap:5px}.stage-picker button{padding:8px 4px}.stage-picker span{font-size:11px}.title h1{margin:16px 0}.difficulty-picker{margin:12px 0}
+}
+@media(max-height:730px) and (max-width:600px){.game{grid-template-rows:38px 214px 146px minmax(150px,1fr)138px;height:auto;min-height:100dvh;overflow:visible}.game-active{overflow:auto}}
+.recipe-card>strong{line-height:24px}.recipe-card>.role-mark{line-height:20px}.recipe-card>.type-role{line-height:12px}.recipe-card>.compound-name{line-height:16px}.recipe-card>.effect-summary{line-height:16px}.recipe-card{gap:1px;justify-content:center;padding-top:3px;padding-bottom:3px}.recipe-card>*{flex-shrink:0}
+@media(min-width:601px){.hand-grid .element-card img{height:94%;width:70%;margin:0 0 0 25%}}
+.barrier:after{content:'□ バリア';position:absolute;inset:20% 10%;border:3px solid #75caff;border-radius:20px;background:#4cafff44;display:grid;place-items:center;font-size:20px;color:white;pointer-events:none;animation:impact .6s}
+.recovering:after{content:'＋ 回復';position:absolute;inset:20% 10%;border-radius:20px;background:#3adcac66;display:grid;place-items:center;font-size:22px;pointer-events:none;animation:impact .6s}
+.break-reaction{animation:impact .8s ease-in-out;filter:brightness(1.3)}
+@media(prefers-reduced-motion:reduce){#enemy-avatar img,.ready,.boss-enter,.hit,.break-reaction,.barrier:after,.recovering:after{animation:none}}

@@ -1,0 +1,65 @@
+.game{grid-template-rows:44px 220px 172px minmax(0,1fr)90px}
+.battle-hud{grid-template-columns:1.12fr 1fr}
+#enemy-panel{padding-left:204px;gap:2px;justify-content:center}
+#enemy-avatar{width:185px;height:194px;top:15px;left:7px}
+.enemy-top{height:38px}.enemy-title strong{font-size:20px}
+#enemy-panel>.hp-line{height:27px;max-width:none;flex-wrap:wrap;position:relative;padding-bottom:9px;gap:6px}
+#enemy-panel>.hp-line label{font-size:12px}#enemy-hp-text{font-size:16px}
+#enemy-panel>.hp-line progress{position:absolute;bottom:0;left:0;width:100%}
+#enemy-receipt{font-size:15px;font-weight:900;line-height:22px;margin-top:0}
+#rescue-chance{font-size:12px;font-weight:900;color:#8b4d00;line-height:17px;min-height:0;flex-shrink:0}
+#rescue-chance:empty{display:none}
+.player{padding:12px;gap:7px}.player>.hp-line,.player>.player-stats,.player>.charge,.player>#role-receipt,.player>#player-receipt{width:53%}
+.player>.hp-line{height:24px}.player>.hp-line b{font-size:14px}.player>.hp-line progress{max-width:130px}
+.player>.charge{margin-top:8px}.player>.player-top{padding-right:45%}
+.player>.support-row{position:absolute;right:8px;top:10px;bottom:10px;width:42%;display:flex;flex-direction:column;justify-content:center;gap:6px;border-left:1px solid #ffffff35;padding-left:9px;text-align:center}
+.player #support-portrait{width:90px;height:91px}.player #support-label b{font-size:14px}.player #support-label small{font-size:11px}.player .support-row>span:nth-child(2){flex:0}
+.player #special-button{width:100%;min-height:44px;font-size:12px}
+.action-bar{gap:4px}#message{min-height:24px;font-size:12px;flex:1}
+.recipe-list{gap:7px}.recipe-card{flex-basis:146px;padding:4px;gap:1px;justify-content:center}.recipe-card>.role-mark{font-size:18px;line-height:22px}.recipe-card>strong{font-size:25px;line-height:26px}.recipe-card>.compound-name{font-size:12px;line-height:16px}.recipe-card>.type-role{font-size:9px;line-height:12px}.recipe-card>.effect-summary{font-size:13px;line-height:17px}
+.recipe-card[data-recommended=true]{border-color:#ffcd62;box-shadow:inset 0 0 0 2px #fff2,0 0 6px #ffd86b66}
+.recipe-card[data-recommended=true] .role-mark:after{content:'推';font-size:9px;color:#ffd978;margin-left:4px}
+#presentation{background:#17264d22}
+#presentation.composition{display:block}
+#presentation.composition #presentation-card{position:absolute;left:50%;top:var(--reaction-y);translate:-50% -50%;padding:12px;width:min(82vw,350px);min-height:155px}
+#presentation.composition #presentation-card p{margin:5px 0;font-size:12px;line-height:1.4}
+#presentation.composition #presentation-card strong{font-size:34px}
+#presentation.composition #presentation-card small{font-size:11px}
+#presentation.composition #presentation-card.forming{visibility:hidden}
+#reaction-core{display:none;position:absolute;left:50%;top:var(--reaction-y);translate:-50% -50%;width:108px;height:108px;border:4px double #9af7ff;border-radius:32%;background:radial-gradient(circle,#f7fdff,#75deee 38%,#1f567b 80%);box-shadow:0 0 calc(15px + var(--level,0)*35px) #9cf8ff;color:#093a57;place-content:center;text-align:center;z-index:23}
+#reaction-core span{font-size:10px;font-weight:900}#reaction-core b{display:block;font-size:25px}#presentation.composition #reaction-core.collecting{display:grid}
+.core-pulse{animation:core-pulse .18s ease-out}.core-flash{filter:brightness(1.7)}
+.near-rescue{background:radial-gradient(ellipse,#ffdd8555,transparent 75%)}.near-rescue img{filter:drop-shadow(0 0 8px #fff2bb) saturate(.9)}
+.weak-impact{animation:weak-impact .6s}.break-reaction{animation:weak-impact .7s;filter:brightness(1.3)}
+@keyframes core-pulse{50%{scale:1.12}}@keyframes weak-impact{25%{transform:translateX(-7px)}50%{transform:translateX(6px);filter:brightness(1.25)}75%{transform:translateX(-3px)}}
+@media(max-width:600px){
+ .game{grid-template-rows:40px 224px 170px minmax(0,1fr)118px;gap:6px}
+ .battle-hud{grid-template-columns:1.32fr 1fr}
+ #enemy-panel{padding:6px;gap:3px;justify-content:flex-start}
+ #enemy-avatar{width:100px;height:156px;left:0;top:47px}
+ .enemy-title strong{font-size:14px}.enemy-top{height:35px}
+ #enemy-panel>.hp-line,#enemy-panel>.enemy-shield,#weakness,#resistance,#enemy-panel>.next,#rescue-chance{margin-left:94px}
+ #enemy-panel>.hp-line{height:35px;padding-bottom:10px;gap:0;max-width:none;display:block}
+ #enemy-panel>.hp-line label{display:block;font-size:10px;line-height:11px;white-space:nowrap}
+ #enemy-hp-text{font-size:13px;line-height:15px}
+ #enemy-panel>.hp-line progress{bottom:0;height:7px}
+ #enemy-receipt{font-size:11px;line-height:19px;margin-top:auto;white-space:nowrap;padding:0 2px}
+ #rescue-chance{font-size:11px;line-height:15px;flex-shrink:0;white-space:nowrap}.enemy-shield{font-size:10px;line-height:13px}
+ #weakness,#resistance{font-size:10px;line-height:13px}.next{min-height:34px;padding:3px}.next b{font-size:10px;line-height:12px}
+ .player{padding:7px;gap:6px}.player>.hp-line,.player>.player-stats,.player>.charge,.player>#role-receipt,.player>#player-receipt{width:100%}
+ .player>.hp-line b{font-size:11px}.player>.hp-line progress{max-width:none}.player>.player-top{padding-right:0}
+ .player>.charge{margin-top:auto}.player-stats{font-size:11px}.player .receipt{font-size:11px}
+ .recipe-list{gap:5px}.recipe-card{flex-basis:calc((100vw - 36px)/3);padding:3px 2px}
+ .recipe-card>.role-mark{font-size:16px;line-height:22px;white-space:nowrap;letter-spacing:-.5px}.recipe-card>strong{font-size:23px;line-height:26px}.recipe-card>.compound-name{font-size:10px;line-height:14px;white-space:nowrap;letter-spacing:-.4px}.recipe-card>.type-role{font-size:8px;line-height:11px;padding:0 3px}.recipe-card>.effect-summary{font-size:12px;line-height:16px}
+ .element-card{justify-content:center}.element-card img{width:96%;height:calc(100% - 23px);margin:21px 0 0}
+ .identity-badge{top:3px;left:3px;padding:0 3px;min-width:0}.identity-badge strong{font-size:14px;line-height:14px}.identity-badge small{font-size:8px;line-height:9px}
+ .action-bar{gap:3px}.support-row{height:38px;min-height:38px;gap:4px}.support-row button{min-height:36px;font-size:10px;padding:4px;max-width:160px}
+ #support-portrait{height:34px;width:33px}#support-label b{font-size:10px}#support-label small{font-size:8px}.support-row{font-size:10px}
+ #message{min-height:16px;font-size:10px;line-height:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+ .actions button{min-height:44px;font-size:11px}.actions{gap:5px}
+ #presentation.composition #presentation-card{width:300px;padding:9px;min-height:152px}
+ #presentation.composition #presentation-card strong{font-size:30px}
+ #presentation-card>.support-image{width:150px;height:156px}
+}
+@media(max-height:730px) and (max-width:600px){.game{grid-template-rows:38px 214px 140px minmax(220px,1fr)118px;min-height:100dvh;height:auto;overflow:visible}.game-active{overflow:auto}}
+@media(prefers-reduced-motion:reduce){.core-pulse,.weak-impact,.break-reaction{animation:none}}

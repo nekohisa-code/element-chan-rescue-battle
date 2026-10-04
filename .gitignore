@@ -1,0 +1,10 @@
+*.zip
+*.log
+.DS_Store
+Thumbs.db
+__pycache__/
+.env
+.env.*
+*.key
+*.pem
+.publish-local/

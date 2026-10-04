@@ -1,0 +1,23 @@
+Prototype 0.12 / 公開ゲーム音源
+
+ボスBGM: Battle Theme
+作者: Wolfgang_ (Theodore Kerr)
+配布元: OpenGameArt.org
+https://opengameart.org/content/battle-theme-0
+ファイル: docs/assets/audio/battle_theme.mp3
+ライセンス: CC0 1.0 Universal
+https://creativecommons.org/publicdomain/zero/1.0/
+公開準備時確認日: 2026-10-05 JST
+既存ファイルを無改変で使用。任意クレジットとして作者を記載。
+
+雑魚BGM: meadow_adventure.wav
+本作専用オリジナル数式合成音、外部サンプルなし。
+作者表記: 理系ねこラボ向けCodex制作 / CC0 1.0
+
+SE: select.wav / deselect.wav / success.wav / fail.wav /
+new_discovery.wav / draw.wav / shuffle.wav / enemy_hit.wav /
+player_hit.wav / victory.wav
+本作専用オリジナル数式合成音、外部サンプルなし。
+作者表記: 本作向けCodex制作 / CC0 1.0
+
+古い履歴BGMは公開用同梱対象から除外。
