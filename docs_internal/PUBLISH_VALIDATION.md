@@ -1,8 +1,14 @@
-# 公開準備検証 / 2026-10-05
+# 公開検証報告 / 2026-10-05
 
-STATUS: HOLD_FOR_GITHUB_AUTH
+STATUS: PASS
 
-公開対象の内容: Prototype 0.12。公開Repository・Pagesはまだ未作成で、公開URLのHTTP応答・公開PC/スマホ検証は未実施です。
+公開対象の内容: Prototype 0.12。
+
+PUBLIC_GAME_URL: https://nekohisa-code.github.io/element-chan-rescue-battle/
+
+GITHUB_REPOSITORY: https://github.com/nekohisa-code/element-chan-rescue-battle
+
+DEPLOY_METHOD: GitHub Pages / main / docs
 
 ## ファイル・安全性
 
@@ -32,12 +38,27 @@ Project Siteと同じ名前のサブパスから配信して検証。ゲーム�
 
 mainのローカルRepositoryを新規作成。Gitのグローバル設定は変更せず、Repository限定の公開用noreply作者情報を使用。
 
-予定remote: https://github.com/nekohisa-code/element-chan-rescue-battle.git
+remote origin: https://github.com/nekohisa-code/element-chan-rescue-battle.git
 
-認証連携ではnekohisa-codeを確認できるが、作成・push・Pages設定に使えるGit認証アカウントは未登録。ブラウザも未ログイン。秘密値は取得・保存・表示していない。
+Git認証アカウントnekohisa-codeを確認。同名Repository不存在を確認してPUBLIC Repositoryを新規作成。mainを通常pushし、Pages main/docsを設定。build成功、HTTPS有効。認証情報はソース・ログへ保存・表示していない。
 
-初回認証後、同名Repository不存在を再確認 → PUBLIC作成 → 公開対象再検査 → main通常push → Pages main/docs → HTTPS実アクセス検証、の順で続行。既存同名Repositoryがあれば停止。force push・独自Actions・Firewall変更なし。
+初回ゲーム公開commit: fa499027accce0781585d266f2959ea7da2713e9。以降の公開報告更新は文書のみで、ゲームファイル変更なし。force push・独自Actions・Firewall変更なし。
+
+## 公開HTTPS URL実アクセス検証
+
+- HTTP_STATUS: 200。58実行ファイルすべてHTTP 200、公開応答SHA-256はcommit内の各ファイルと一致。
+- HTML・CSS・JavaScript・画像・音声asset取得：PASS。実画面のCSS適用、全表示画像読み込みを確認。
+- PC 1280×900：タイトル → STORY 1 → 通常難易度準備戦 → HCl組成完成 → 18ダメージ → サポート選択 → Ga戦を実操作。ページサイズ1280×900。
+- 390×844：通常難易度Ga戦、手札8枚、HP 110 / 110、候補・操作ボタンを確認。ページサイズ390×844、主要戦闘UIの縦スクロールなし。
+- BGM：準備戦meadow_adventure.wavとボス戦battle_theme.mp3の再生・切替をaudio要素の状態で確認。SE ONで化合物完成操作。端末スピーカーによる主観的聴取は未実施。
+- 元素図鑑22体の画像正常、化合物図鑑73件。リロード後もHCl発見済みで、公開URLのlocalStorage保持を確認。
+- PUBLIC_CONSOLE_ERROR: 0。
+- 公開版ではGa/In/Snの全救出通しプレイを再実施していない。ローカル境界検証と実行ファイルの公開hash一致を併用。
+- IPHONE_REAL_DEVICE_PUBLIC_TEST: PENDING。390×844の実ブラウザ幅検証であり、iPhone実機Safari確認とは区別。
+- 保護対象の安定ファイル889件は作業前後SHA-256一致。旧版・0.12・118 MASTER未変更。稼働中配信ログ2件は除外。
+
+公開HTTPS URLは自宅PCの起動、同一Wi-Fi、ローカルFirewall設定に依存しない。端末/ブラウザ別のlocalStorage保存となり、ローカル版保存は自動移行しない。
 
 Pagesの設定根拠: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
-この文書のPASSは公開準備の範囲のみ。公開完了を意味しません。
+公開および上記の実アクセス検証は完了。次の安定版は開発版を保護したままdocs更新 → diff/秘密情報確認 → commit → push → Pages反映 → 公開再検証。通常URLを固定して運用する。

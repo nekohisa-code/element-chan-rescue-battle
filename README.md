@@ -6,9 +6,9 @@
 
 ## 公開先
 
-公開予定URL: https://nekohisa-code.github.io/element-chan-rescue-battle/
+[ゲームで遊ぶ](https://nekohisa-code.github.io/element-chan-rescue-battle/)
 
-現在は公開準備版です。GitHub認証・初回push・Pages公開確認は未完了です。
+公開済みです。自宅PCの起動や同一Wi-Fiへの接続は不要です。
 
 安定版の内容: Prototype 0.12。PC・スマホ対応。タッチ操作で遊べます。
 
@@ -28,6 +28,8 @@
 進行・救出・仲間・発見した化合物・選択サポートは、そのブラウザのlocalStorageに保存します。アカウント・課金・バックエンドはありません。ローカル版の保存は公開版へ自動移行しません。端末・ブラウザが違う場合も別記録になります。
 
 BGMは初期OFF。音声は開始操作や音声ボタンのタップ後に再生します。端末の音量・消音設定により聞こえない場合があります。
+
+公開URL上でPC 1280×900・スマホ幅390×844、STORY・戦闘・図鑑・画像・音声・保存を確認済み。console errorは0。iPhone実機Safariでの公開版プレイ確認は未実施です。詳しくは[公開検証報告](docs_internal/PUBLISH_VALIDATION.md)をご覧ください。
 
 ## 公開・更新方法
 
