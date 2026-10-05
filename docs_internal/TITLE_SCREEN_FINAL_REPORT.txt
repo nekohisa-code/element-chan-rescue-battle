@@ -1,0 +1,7 @@
+TITLE_SCREEN: PASS
+採用済みH/Oを中央タイトル左右へ。Ga/In/Sn/Si/Znを5体リボンへ。
+7体とも既存assets使用、加工/生成/外部取得無し。contain＋paddingで頭切れ無し。
+淡いgradient、soft glow、集合カード。顔とタイトル文字は別gridセル。
+PC1280/1600: 7画像ロード、START下端643px。
+390×844: 7画像ロード、START下端543px。ページ幅390、高さ844。
+Story選択・難易度・Support・図鑑・LINE3リンク・リセットを維持。

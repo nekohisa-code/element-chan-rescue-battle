@@ -1,0 +1,7 @@
+SAVE_MIGRATION: PASS
+既存progress015.js/engine015.js/story engineは最終UI修正で未変更。
+element014-collection→element015-collectionへ不足field default補完、既存発見/設定/研究を維持。
+QA時はelement015-qa-collection等の独立保存領域。通常記録へテストを混入しない。
+FINAL_LOGIC_12.json: 0.14移行/再読込、研究、reset設定保持PASS。
+実ブラウザ: He未完了NEWをclose→同じQA URL reload→He pending保持→reveal後seen。
+未表示項目を一括seenにしない。sort/cancelはepoch更新し残り保持。

@@ -1,0 +1,6 @@
+FINAL_UI_REBASELINE: LOCAL PASS
+asset key015-rebaseline-20261005を継続。旧014 key/145px rule無し。
+最終修正はSupport/NEW/titleのみ。敵HUD・ROLE・SPECIAL主要配置・手札・救出結果を再設計していない。
+1109保護hash一致、dist75ファイルHTTP200・hash一致、ロジック12PASS。
+PC1280/1600、中間800、390×844 PASS。Supportのカード外overflowを除去。
+詳細は各FINAL_REPORTとevidence。前回rebaseline記録はevidence/UI_REBASELINE_REPORT.txtに保持。

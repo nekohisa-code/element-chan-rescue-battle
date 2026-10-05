@@ -1,28 +1,28 @@
 /* 0.12 overrides are isolated from every earlier version. */
-.game{grid-template-rows:44px 230px 168px minmax(0,1fr) 90px!important}
-.recipe-list{display:flex!important;flex-flow:row nowrap!important;align-items:stretch;gap:6px!important;grid-template-rows:none!important}
-.recipe-card{flex:0 0 156px!important;width:156px!important;min-width:156px!important;gap:0!important;justify-content:center}
-.recipe-card>.compound-name{font-size:15px!important;line-height:17px!important;min-height:34px!important}
-.recipe-card>.type-role{order:5}.recipe-card>.effect-summary{order:4;font-size:11px;line-height:14px}
-.element-card img{width:100%!important;flex:0 0 100%;height:calc(100% - 34px)!important;margin:32px 0 0!important;transform:none!important;object-fit:contain;object-position:center}
-#player-panel{gap:4px!important}#player-panel .player-top{height:22px;flex-shrink:0}#player-panel .charge{margin-top:4px!important}
-.hand-grid{min-height:0}.identity-badge{min-width:60px}
-.title{padding:20px;max-width:820px}.title h1{margin:10px 0;font-size:clamp(28px,4vw,44px);font-weight:900}.subtitle{font-size:16px;font-weight:800}
-.stage-picker{margin:14px 0}.difficulty-picker{margin:12px 0}.difficulty-picker button{padding:12px 8px}
-.support-picker{margin:12px}.title-links{margin-top:14px}
-.book-grid{align-items:stretch;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}.book-item{display:flex;flex-direction:column;align-items:center;min-width:0;gap:4px}.book-item strong,.book-item>b{font-size:16px;line-height:1.3}.book-item p{margin:4px 0;font-size:12px;line-height:1.65}.book-item .science-copy{text-align:left}
-#info-modal{overflow:hidden;max-height:85dvh}#info-modal h2{min-height:48px;margin:0 0 8px;padding-right:90px;line-height:1.4}#close-modal{position:absolute;right:16px;top:16px;z-index:10}#modal-content{overflow:auto;max-height:calc(85dvh - 100px)}
-.book-portrait{display:block;width:100%;height:145px;overflow:hidden;position:relative}
-.book-portrait img,.support-image img{width:100%!important;height:100%!important;object-fit:contain!important;position:static!important;transform:none!important;max-width:100%!important;margin:0!important}
-.support-image{display:block;overflow:hidden;position:relative;width:100%;height:100%}
-#support-portrait{height:72px;width:72px}.support-row{align-items:center}
+.game{}
+.recipe-list{}
+.recipe-card{}
+.recipe-card>.compound-name{}
+.recipe-card>.type-role{}.recipe-card>.effect-summary{}
+.element-card img{transform:none!important}
+#player-panel{}#player-panel .player-top{}#player-panel .charge{}
+.hand-grid{}.identity-badge{}
+.title{}.title h1{font-weight:900}.subtitle{font-weight:800}
+.stage-picker{}.difficulty-picker{}.difficulty-picker button{}
+.support-picker{}.title-links{}
+.book-grid{}.book-item{}.book-item strong,.book-item>b{}.book-item p{}.book-item .science-copy{text-align:left}
+#info-modal{}#info-modal h2{}#close-modal{position:absolute;right:16px;top:16px;z-index:10}#modal-content{}
+.book-portrait{}
+.book-portrait img,.support-image img{transform:none!important}
+.support-image{}
+#support-portrait{}.support-row{}
 .support-choice-mode{overflow:hidden!important;width:min(92vw,760px);max-height:80dvh;padding:16px;}
-.support-choice-mode #modal-content{display:grid;grid-template-rows:minmax(0,1fr) auto auto;gap:10px;min-height:0;}
-.support-choice-mode #modal-content{overflow:hidden}
+.support-choice-mode #modal-content{}
+.support-choice-mode #modal-content{}
 .support-choices{display:flex!important;flex-flow:row nowrap;gap:8px;overflow:auto;max-height:300px;padding:5px 3px 10px}
 .support-choices>button{display:flex;flex-direction:column;align-items:center;gap:8px;flex:0 0 148px;min-width:0;padding:10px;min-height:248px;}
-.support-choices .support-image{width:100%;height:100px;flex-shrink:0}.support-choices small{font-size:11px;line-height:1.5}.support-choices b{font-size:14px}.support-choices strong{font-size:12px}.support-choices .active{border:3px solid #df9d23;background:#fff2ba;box-shadow:0 0 0 2px #ffca5a55}
-#selected-support-label{font-size:14px;margin:0;font-weight:900}#support-go{width:100%;min-height:46px}
+.support-choices .support-image{}.support-choices small{font-size:11px;line-height:1.5}.support-choices b{font-size:14px}.support-choices strong{font-size:12px}.support-choices .active{border:3px solid #df9d23;background:#fff2ba;box-shadow:0 0 0 2px #ffca5a55}
+#selected-support-label{font-size:14px;margin:0;font-weight:900}#support-go{}
 #presentation{background:transparent!important;pointer-events:none}
 #presentation #presentation-card,#presentation[data-phase=absorbing] #presentation-card.forming{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#152a48;text-shadow:0 0 5px #fff,0 0 12px #fff,0 2px 1px #fff;}
 #presentation.composition #presentation-card{padding:0!important;width:min(92vw,500px)}
@@ -37,21 +37,21 @@
 .story header{display:flex;align-items:center;justify-content:space-between}.story header strong{font-size:20px;text-shadow:0 1px white}
 #story-cast{display:flex;align-items:flex-end;justify-content:center;gap:18px;min-height:0;overflow:hidden}#story-cast img{height:80%;width:25%;max-width:300px;object-fit:contain;filter:brightness(.9);opacity:.88}#story-cast img.speaking{height:98%;filter:drop-shadow(0 0 8px #fff);opacity:1;}
 .dialogue-window{background:#fcfffff5;border:3px solid #fff;border-radius:24px;box-shadow:0 8px 30px #1c4d6644;padding:16px 24px;display:flex;flex-direction:column;min-height:0}
-#story-name{color:#305f82;font-size:19px}#story-dialogue{font-size:21px;font-weight:700;line-height:1.65;margin:8px 0;flex:1}.story-controls{display:flex;align-items:center;justify-content:space-between;gap:10px}.story-controls button{min-width:150px}.result #result-stats b{display:block}
+#story-name{color:#305f82;font-size:19px}#story-dialogue{font-size:21px;font-weight:700;line-height:1.65;margin:8px 0;flex:1}.story-controls{display:flex;align-items:center;justify-content:space-between;gap:10px}.story-controls button{min-width:150px}.result #result-stats b{}
 @media(max-width:600px){
- .game{grid-template-rows:40px 240px 156px minmax(0,1fr) 108px!important}
- .recipe-card{flex:0 0 108px!important;width:108px!important;min-width:108px!important;padding:3px!important}
- .recipe-card>.compound-name{font-size:13px!important;line-height:14px!important;min-height:28px!important}
- .recipe-card>.effect-summary{font-size:10px!important;line-height:12px!important}.recipe-card>.reason-summary{font-size:9px;line-height:11px}.recipe-card>.type-role{font-size:8px;line-height:9px}
- .element-card img{height:calc(100% - 18px)!important;margin-top:16px!important;width:96%}
- #support-portrait{width:29px!important;height:29px!important;flex:0 0 29px;overflow:hidden}
- .title{padding:16px 12px}.title h1{font-size:29px}.subtitle{font-size:13px;margin:8px 0}.eyebrow{margin:4px}
- .stage-picker{margin:12px 0}.difficulty-picker{margin:10px 0}.science{font-size:10px}.support-picker{margin:10px}.title-links button{font-size:12px}
- .book-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.book-item{padding:8px}.book-portrait{height:140px}.book-item strong,.book-item>b{font-size:14px}
+ .game{}
+ .recipe-card{}
+ .recipe-card>.compound-name{}
+ .recipe-card>.effect-summary{}.recipe-card>.reason-summary{}.recipe-card>.type-role{}
+ .element-card img{}
+ #support-portrait{}
+ .title{}.title h1{}.subtitle{}.eyebrow{}
+ .stage-picker{}.difficulty-picker{}.science{font-size:10px}.support-picker{}.title-links button{}
+ .book-grid{}.book-item{}.book-portrait{}.book-item strong,.book-item>b{}
  #presentation.composition #presentation-card strong{font-size:44px!important}#presentation.composition #presentation-card .completion-name{font-size:28px!important;line-height:1.2!important}
  #presentation.composition #presentation-card p:not(.completion-name){font-size:10px}
  .story{grid-template-rows:46px minmax(0,1fr) 220px;padding:12px 12px max(20px,env(safe-area-inset-bottom));gap:10px}.story header strong{font-size:16px}#story-cast{gap:4px}#story-cast img{width:27%;height:68%}#story-cast img.speaking{width:43%;height:96%}
  .dialogue-window{padding:14px 16px;border-radius:18px}#story-name{font-size:16px}#story-dialogue{font-size:17px;line-height:1.7}.story-controls button{min-width:132px;min-height:44px}
- .support-choice-mode{padding:12px;max-height:78dvh}.support-choice-mode h2{font-size:18px}.support-choices>button{flex-basis:118px;min-height:238px;padding:8px;gap:5px}.support-choices .support-image{height:105px}.support-choices small{font-size:10px}.support-choices b{font-size:12px}.support-choices strong{font-size:11px}
+ .support-choice-mode{padding:12px;max-height:78dvh}.support-choice-mode h2{font-size:18px}.support-choices>button{flex-basis:118px;min-height:238px;padding:8px;gap:5px}.support-choices .support-image{}.support-choices small{font-size:10px}.support-choices b{font-size:12px}.support-choices strong{font-size:11px}
  .break-dots i{width:8px;height:8px}
 }

@@ -1,0 +1,82 @@
+(function(root){'use strict';
+const A=root.APP014,D=root.STAGE_DATA,C=root.COLLECTION013,E=root.STAGE_ENGINE,S=root.STORY_ENGINE,$=id=>document.getElementById(id),reduced=()=>matchMedia('(prefers-reduced-motion:reduce)').matches;
+const footer=document.querySelector('.action-bar'),support=document.querySelector('.support-row'),charge=document.querySelector('.charge'),special=document.querySelector('.synthesis-row');
+special.classList.add('special-hud');$('player-panel').append(special);charge.querySelector('label').firstChild.textContent='サポートゲージ ';
+const supportInfo=support.querySelector('.support-information');supportInfo.append(charge,$('special-button'));
+// One placement, for all widths. Responsive positioning is CSS-owned.
+footer.prepend(support);
+special.querySelector('label').innerHTML='SPECIAL <b id="synthesis-percent">0%</b><progress id="synthesis-gauge" max="100" value="0"></progress>';
+const meta=document.createElement('div');meta.className='enemy-meta';
+['rescue-chance','resistance'].forEach(id=>meta.append($(id)));
+meta.append(document.querySelector('#enemy-panel .next'),$('enemy-receipt'),$('mission-strip'));$('enemy-panel').append(meta);
+$('hero-h').src=D.elements.H.image;$('hero-o').src=D.elements.O.image;
+const allies=document.createElement('div');allies.className='hero-allies';
+for(const symbol of ['Ga','In','Sn','Si','Zn']){const e=D.elements[symbol],portrait=document.createElement('figure');portrait.innerHTML=`<img src="${e.image}" alt="${symbol} ${e.name}ちゃん"><figcaption>${symbol}</figcaption>`;allies.append(portrait);}
+document.querySelector('.title-hero').append(allies);
+const returnButton=document.createElement('button');returnButton.id='battle-title';returnButton.textContent='タイトル';returnButton.setAttribute('aria-label','タイトルへ戻る');document.querySelector('.game-header').append(returnButton);
+returnButton.onclick=()=>{if(A.busy)return;A.modal('タイトルへ戻る','<p>現在の戦闘を終了して<br>タイトルへ戻りますか？</p><p>図鑑・進行・設定は残ります。</p><div class="confirm-actions"><button id="return-yes">はい</button><button id="return-no">いいえ</button></div>','return-mode');$('return-no').onclick=()=>$('info-modal').close();$('return-yes').onclick=()=>{$('info-modal').close();A.returnTitle();};};
+const roleLabel=r=>D.roleDesign[r.role].glyph+' '+D.roleDesign[r.role].name;
+function render(){const s=A.state;if(!s)return;$('synthesis-gauge').value=s.specialGauge;$('synthesis-percent').textContent=s.specialGauge+'%';$('synthesis-button').disabled=A.busy;$('synthesis-button').textContent=A.busy?'合成中…':s.specialGauge>=100?'SPECIAL READY!':'SPECIAL 一覧';$('synthesis-button').classList.toggle('ready',s.specialGauge>=100);special.classList.toggle('is-ready',s.specialGauge>=100);$('player-panel').dataset.roleChain=s.roleChain;$('battle-title').disabled=A.busy;if(!$('rescue-chance').textContent)$('rescue-chance').textContent='救出チャンス：準備中';
+let rc=$('role-chain015');if(!rc){rc=document.createElement('small');rc.id='role-chain015';$('player-panel').append(rc);}rc.textContent=s.roleChain>1?'ROLE CHAIN ×'+s.roleChain:'';
+$('enemy-panel').classList.toggle('phase-two',s.phase2);if(s.phase2)$('enemy-gimmick').textContent='後半 / '+s.selection.boss.gimmick.name;
+if(s.replay)$('stage-label').textContent='再救出演習 / '+(s.phase==='boss'?'救出戦':'準備戦');
+}
+// UI014 calls this renderer; it no longer owns SPECIAL state.
+function library(){if(A.busy)return;const active=new Set((A.state?.qaLibrary?D.specialRecipes:GAME015.research()).map(r=>r.id));A.modal('スペシャル合成 / 8つの研究',`<p class="library-note">元素1種類＝1スタック。×Nは原子の個数。戦闘効果はゲームのルールです。</p><div class="special-grid015">${D.specialRecipes.map(r=>{const unlocked=active.has(r.id),found=A.found.has(r.id),begin=A.level==='beginner',f=unlocked&&(found||begin)?A.formula(r.formula):'???',n=unlocked&&(found||A.level!=='expert')?r.name:'???';return `<button data-special015="${r.id}" data-role="${r.role}" ${!unlocked||A.state.specialGauge<100?'disabled':''} class="${unlocked?'':'locked-special'}"><span class="role-mark">${unlocked?roleLabel(r):'🔒 未解放'}</span><b>${f}</b><strong>${n}</strong><small>${unlocked?A.effect(r):'STAGE '+r.unlockStage+'クリア'+(r.bonus?' ＋ 必要元素発見':'')}</small><small>${unlocked?Object.entries(r.needs).map(([s,n])=>s+' ×'+n).join(' / '):'まだ研究できません'}</small></button>`;}).join('')}</div><p>満タンで発動できます。初回の研究で化合物図鑑に登録！</p>`,'special-mode library015');document.querySelectorAll('[data-special015]').forEach(b=>b.onclick=()=>root.UI014.synthesis(D.specialRecipes.find(r=>r.id===b.dataset.special015)));}
+$('synthesis-button').onclick=library;
+let timer=null,bookKind='element',bookSort='atomic',bookOpen=false,tourEpoch=0;
+const pendingContent=new Map();
+function cancelTour(){clearTimeout(timer);timer=null;bookOpen=false;tourEpoch++;}
+const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+const live=epoch=>bookOpen&&$('info-modal').open&&epoch===tourEpoch;
+function item(id){return [...document.querySelectorAll('[data-book-id]')].find(e=>e.dataset.bookId===id);}
+async function scrollSettled(el,epoch){
+ const pane=$('modal-content');
+ const target=()=>{const rect=el.getBoundingClientRect(),p=pane.getBoundingClientRect();return Math.max(0,Math.min(pane.scrollHeight-pane.clientHeight,pane.scrollTop+rect.top-p.top-(pane.clientHeight-rect.height)/2));};
+ const start=pane.scrollTop,end=target(),duration=reduced()?0:350;
+ // The application owns one scroll animation. No native smooth-scroll timeout race.
+ await new Promise(resolve=>{let began;function frame(time){if(!live(epoch)){resolve();return;}began??=time;const t=duration?Math.min(1,(time-began)/duration):1,ease=t*t*(3-2*t);pane.scrollTo({top:start+(end-start)*ease,behavior:'instant'});if(t<1)requestAnimationFrame(frame);else resolve();}requestAnimationFrame(frame);});
+ if(!live(epoch))return false;
+ pane.scrollTo({top:target(),behavior:'instant'});
+ await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+ if(!live(epoch))return false;
+ const r=el.getBoundingClientRect(),p=pane.getBoundingClientRect();
+ return Math.abs(pane.scrollTop-target())<2&&r.top>=p.top-2&&r.top< p.bottom-40;
+}
+function bindConnections(){document.querySelectorAll('[data-link-kind]').forEach(b=>b.onclick=()=>book(b.dataset.linkKind,undefined,b.dataset.linkId));}
+async function tour(focus){const epoch=tourEpoch,key=bookKind==='element'?'unseenElementUnlocks':'unseenCompoundUnlocks';if(focus&&!C.state[key].includes(focus)){const el=item(focus);if(el)await scrollSettled(el,epoch);}
+while(live(epoch)){const ids=C.state[key],next=focus&&ids.includes(focus)?focus:ids.find(id=>pendingContent.has(id));focus=null;if(!next){$('book-tour015').textContent='NEWの確認が終わりました';return;}const el=item(next);if(!el)return;
+document.querySelectorAll('.book-new').forEach(e=>{e.classList.remove('book-new');e.querySelector('.book-new-label')?.remove();});$('book-tour015').textContent='NEWを巡回 / あと '+ids.length;
+if(!await scrollSettled(el,epoch)||!live(epoch))return;el.classList.add('book-new');el.dataset.revealPhase='glow';await pause(150);if(!live(epoch))return;
+const label=document.createElement('span');label.className='book-new-label';label.textContent='NEW!';el.prepend(label);el.dataset.revealPhase='new';await pause(250);if(!live(epoch))return;
+label.textContent='解放！';el.dataset.revealPhase='unlock';await pause(300);if(!live(epoch))return;
+el.innerHTML='<span class="book-new-label">解放！</span>'+pendingContent.get(next);el.classList.remove('book-pending');el.classList.add('book-released');el.dataset.revealPhase='reveal';bindConnections();
+// Revealing can change row height. Keep this card visible before marking it seen.
+const pane=$('modal-content'),r=el.getBoundingClientRect(),p=pane.getBoundingClientRect();if(r.top<p.top+40||r.bottom>p.bottom)pane.scrollTo({top:Math.max(0,pane.scrollTop+r.top-p.top-42),behavior:'instant'});
+el.dataset.revealPhase='reading';await pause(500);if(!live(epoch))return;C.seen(bookKind,next);pendingContent.delete(next);el.dataset.revealPhase='seen';el.classList.remove('book-new','book-released');el.querySelector('.book-new-label')?.remove();await pause(150);
+}}
+function linksForElement(s){return D.compounds.filter(r=>A.found.has(r.id)&&Object.hasOwn(r.needs,s)).map(r=>`<button class="book-chip" data-link-kind="compound" data-link-id="${r.id}">${A.formula(r.formula)}</button>`).join('');}
+function book(kind,sort,focus){cancelTour();pendingContent.clear();bookKind=kind;bookSort=sort||(kind==='element'?'atomic':'discovered');const isElement=kind==='element';let cards=[];
+if(isElement){const byNo=new Map([...C.known.values()].map(e=>[e.no,e]));cards=Array.from({length:118},(_,i)=>{const e=byNo.get(i+1),found=e&&C.state.discoveredElements.includes(e.symbol);return{id:e?.symbol||'slot'+(i+1),no:i+1,found,html:found?`<span class="book-portrait"><img src="${e.asset}" alt="${e.symbol} ${e.name}"></span><strong>${e.symbol} ${e.name}</strong><small>原子番号 ${e.no}</small><p>${STORY_DATA.elementScience[e.symbol]||'科学情報は準備中です。'}</p><small>発見済み関連化合物</small><div class="book-connections">${linksForElement(e.symbol)||'<small>まだありません</small>'}</div>`:`<span class="unknown-avatar">?</span><strong>?</strong><b>？？？</b><small>原子番号 ${i+1}</small><p>まだ出会っていません</p>`};});if(bookSort==='discovered')cards.sort((a,b)=>Number(b.found)-Number(a.found)||a.no-b.no);}
+else{cards=D.compounds.map(r=>({id:r.id,found:A.found.has(r.id),formula:r.formula,kind:r.chemicalClass,html:A.found.has(r.id)?`<strong>${A.formula(r.formula)}</strong><b>${r.name}</b><small>${r.chemicalClass}${r.specialOnly?' / スペシャル合成':''}</small><p>${A.need(r)}</p><p>${r.science}</p><small>構成元素</small><div class="book-connections">${Object.keys(r.needs).filter(s=>C.state.discoveredElements.includes(s)).map(s=>`<button class="book-chip" data-link-kind="element" data-link-id="${s}">${s} ${D.elements[s].name}</button>`).join('')}</div><small>戦闘効果はゲーム上のルールです</small>`:'<strong>???</strong><b>？？？</b><p>まだ作ったことのない化合物です</p>'}));cards.sort((a,b)=>bookSort==='discovered'?Number(b.found)-Number(a.found)||a.formula.localeCompare(b.formula):bookSort==='class'?a.kind.localeCompare(b.kind,'ja')||a.formula.localeCompare(b.formula):a.formula.localeCompare(b.formula));}
+const options=isElement?[['atomic','原子番号順'],['discovered','発見済み優先']]:[['discovered','発見済み優先'],['formula','化学式順'],['class','種類別']];
+const queue=C.state[isElement?'unseenElementUnlocks':'unseenCompoundUnlocks'];
+const html=`<div class="book-controls"><span>${isElement?C.state.discoveredElements.length+' / 118':A.found.size+' / '+D.compounds.length} 発見</span><select id="book-sort" aria-label="図鑑の並び順">${options.map(([v,n])=>`<option value="${v}" ${v===bookSort?'selected':''}>${n}</option>`).join('')}</select><small id="book-tour015">NEWを順番に確認</small></div><div class="book-grid">${cards.map(c=>{const pending=c.found&&queue.includes(c.id);if(pending)pendingContent.set(c.id,c.html);const content=pending?'<span class="unknown-avatar">?</span><strong>?</strong><b>？？？</b><p>これから図鑑に登録します</p>':c.html;return `<article data-book-id="${c.id}" ${isElement?`data-atomic-slot="${c.no}"`:''} class="book-item ${c.found?'':'locked-book'} ${pending?'book-pending':''}">${content}</article>`;}).join('')}</div>`;
+if($('info-modal').open){$('info-modal').className='book015-mode';$('modal-title').textContent=isElement?'元素図鑑':'化合物図鑑';$('modal-content').innerHTML=html;}else A.modal(isElement?'元素図鑑':'化合物図鑑',html,'book015-mode');bookOpen=true;
+$('book-sort').onchange=e=>book(kind,e.target.value);bindConnections();requestAnimationFrame(()=>{if(bookOpen)tour(focus);});
+}
+root.UI014.book=book;$('element-book').onclick=()=>book('element');$('compound-book').onclick=()=>book('compound');$('info-modal').addEventListener('close',cancelTour);
+root.addEventListener('rescue015',event=>{const d=event.detail,s=d.state;if(d.kind==='hint'){A.toast('組成のヒント',d.text);$('message').textContent=d.text;}
+if(d.kind==='phase2'){A.toast('後半へ / '+d.symbol+'ちゃん',d.line,D.elements[d.symbol].image);$('enemy-panel').classList.add('phase-two');}
+if(d.kind==='ally'){const el=document.createElement('div');el.className='ally-cut015';el.innerHTML=`<img src="${D.elements[d.symbol].image}" alt="${d.symbol}ちゃん"><b>${d.symbol}ちゃんの援護</b><span>${d.line}</span><small>HP +${d.heal} / 盾 +8</small>`;document.body.append(el);A.audio.play('discover');setTimeout(()=>el.remove(),1800);}
+if(['perfect','role-chain','compound'].includes(d.kind)){const el=document.createElement('span');el.className='achievement015 '+d.kind;el.textContent=d.kind==='perfect'?'PERFECT SYNTHESIS!':d.kind==='role-chain'?'ROLE CHAIN ×'+d.count:'NEW! '+d.recipe.formula+' '+d.recipe.name;$('player-panel').append(el);setTimeout(()=>el.remove(),1600);if(d.kind!=='role-chain')A.audio.play('discover');}
+if(d.kind==='special-rescue'){$('enemy-avatar').classList.add('rescued015');$('enemy-receipt').textContent='SPECIAL RESCUE / 救出成功！';}
+if(d.kind==='special'){C.register(Object.keys(d.recipe.needs));const el=document.createElement('div');el.className='technique015 '+d.recipe.technique;el.setAttribute('aria-hidden','true');el.innerHTML='<i></i><i></i><i></i><i></i><i></i><i></i>';(d.recipe.role==='ATTACK'?$('enemy-panel'):$('player-panel')).append(el);setTimeout(()=>el.remove(),1400);}
+});
+const ranks=new MutationObserver(()=>rankPicker());function rankPicker(){ranks.disconnect();for(const b of document.querySelectorAll('[data-stage]')){const id=b.dataset.stage,v=C.state.rescueRanks?.[id];if(v)b.querySelector('small').textContent='再救出演習 / '+GAME015.rankNames[v];}ranks.observe($('stage-picker'),{childList:true});}rankPicker();
+function result(){const s=A.state;if(!s)return;const counts=new Map();for(const id of s.history)counts.set(id,(counts.get(id)||0)+1);$('result-list').innerHTML=[...counts].map(([id,n])=>{const r=D.compounds.find(r=>r.id===id);return `<span class="result-chip">${A.formula(r.formula)} ${r.name}${n>1?' ×'+n:''}</span>`;}).join('');if(s.result!=='win')return;const b=s.selection.boss,rank=GAME015.rankNames[GAME015.rank(s)];if(s.replay)$('result-title').textContent='再救出演習 完了！';
+$('rescue-card').innerHTML=`<h2 class="rescue-rank015">${rank}</h2><div class="result-summary"><div class="result-character"><img src="${b.asset}" alt="${b.symbol} ${b.element_jp}"><div><h2>${b.symbol} ${b.element_jp}ちゃん${s.replay?'と救出演習完了！':'が仲間になった！'}</h2><p>${s.replay?'仲間ともう一度力を合わせた！':'元素図鑑に登録！ '+(A.stage<5?'次のStageから使えるよ。':'クリア済みStageで使えるよ。')}</p></div></div><div class="study-card"><small>今回の発見 / ${b.symbol}ちゃん</small><b>${b.symbol} ${b.element_jp} / 原子番号 ${b.atomic_no}</b><p>${STORY_DATA.elementScience[b.symbol]}</p><button id="result-book015">図鑑で見てみよう</button></div></div>`;
+$('result-book015').onclick=()=>book('element',undefined,b.symbol);
+const unlocks=GAME015.research().filter(r=>!C.state.knownSpecialUnlocks.includes(r.id));if(unlocks.length){A.toast('NEW SPECIAL!',unlocks.map(r=>r.name).join(' / '));C.state.knownSpecialUnlocks.push(...unlocks.map(r=>r.id));C.save();}}
+root.UI015={render,book,result,library,cancelTour};
+})(window);

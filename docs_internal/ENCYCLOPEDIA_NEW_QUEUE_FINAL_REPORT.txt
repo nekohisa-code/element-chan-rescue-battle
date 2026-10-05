@@ -1,0 +1,11 @@
+ENCYCLOPEDIA_NEW_QUEUE: PASS
+旧native smooth-scroll＋1秒timeoutを、単一requestAnimationFrame350ms easeのscroll所有へ変更。
+各itemの現DOM位置とscrollHeightを再計算。scroll到着の実rectを確認してから演出。
+glow150ms → NEW!250ms → 解放！300ms → reveal/reading500ms → next150ms。
+通常1件約1.7秒。実測O seen1598ms、Ga seen3346ms、Ne seen5144ms。
+先見え防止: pendingContent Map、articleは? placeholder、画像無し。reveal時だけ本物HTMLを挿入。
+seenはreading完了後のみ。epoch/open検査でclose・sortを中断。sortは新DOM位置から再開。
+元素3件O/Ga/Neの遠隔移動PASS。化合物4件sucrose/acetic/citric/caffeine、formula sort後PASS。
+He単件: close前pending、close後pending、同じQA URL再読込後pending、再開完了後seen。
+QA URLと通常URLは別保存領域。初期の異なるURL比較は互換テストとして採用しない。
+prefers-reduced-motionはscroll即時・reveal animation無し、文字を読む保持時間は維持。

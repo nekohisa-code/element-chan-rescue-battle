@@ -1,25 +1,25 @@
 /* 0.11 only: numerical HUD, compact recommendations and role effects. */
-.battle-hud{grid-template-columns:1.6fr 1fr!important}
-.game{grid-template-rows:44px 244px 172px minmax(0,1fr) 90px!important}
-#enemy-avatar{width:224px!important;height:212px!important;left:8px!important;top:8px!important}
-#enemy-panel{padding-left:236px}
-.enemy-top{height:62px}
-.recipe-card{flex-basis:calc((100% - 16px)/3)}
+.battle-hud{}
+.game{}
+#enemy-avatar{}
+#enemy-panel{}
+.enemy-top{}
+.recipe-card{}
 .element-card img{transform:scale(1)}
-#enemy-gimmick{display:block;font-size:12px;color:#866025;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hp-line{display:grid!important;grid-template-columns:auto 1fr;gap:4px;height:auto!important;min-height:42px;padding-bottom:4px!important}
-.hp-line progress{position:static!important;grid-column:1/-1;width:100%!important;height:12px!important}
-.hp-line b{position:static!important;text-align:right}
-.compound-name{font-size:16px!important;font-weight:900!important;line-height:19px!important;white-space:normal!important;min-height:20px;display:flex;align-items:center;justify-content:center}
-.recipe-card{position:relative}
-.recipe-card{gap:0!important;padding:3px!important}
-.recipe-card>.role-mark{font-size:15px;line-height:18px}
-.recipe-card .type-role{display:none}
+#enemy-gimmick{color:#866025;text-overflow:ellipsis}
+.hp-line{}
+.hp-line progress{}
+.hp-line b{text-align:right}
+.compound-name{font-weight:900!important}
+.recipe-card{}
+.recipe-card{}
+.recipe-card>.role-mark{}
+.recipe-card .type-role{}
 .role-mark:after{content:none!important}
-.recommend-tag{position:absolute;right:5px;top:5px;background:#ffdf68;color:#573800;border-radius:8px;padding:2px 5px;font-size:10px;font-weight:900;z-index:2}
-.reason-summary{display:block;color:#fff1b2;font-size:12px;font-weight:800;line-height:15px;z-index:1}
-.hp-line label{order:0}.hp-line b{order:1}.hp-line progress{order:2}
-.recipe-card sub{line-height:0}
+.recommend-tag{background:#ffdf68;color:#573800;border-radius:8px;font-weight:900;z-index:2}
+.reason-summary{color:#fff1b2;font-weight:800;z-index:1}
+.hp-line label{}.hp-line b{}.hp-line progress{}
+.recipe-card sub{}
 .ar-portrait img{width:300%!important;height:300%!important;max-width:none!important;position:absolute;left:-52%!important;top:-120%!important;object-fit:contain}
 .presentation[data-role] .presentation-card{background:radial-gradient(circle at 25% 10%,#46557e,#121d38 72%);color:white;border:3px double #a7bcff;box-shadow:0 0 0 5px #17274a99,0 12px 34px #17274a80,inset 0 0 30px #718bff44}
 .presentation[data-role=ATTACK] .presentation-card{border-color:#ffb77a;background:radial-gradient(circle at 25% 10%,#b54f35,#441d32 72%)}
@@ -30,34 +30,34 @@
 .presentation-card .reaction-core{background:radial-gradient(circle,#fff6b8,#ff874b 70%,#952955)!important;border:4px double #fff8d0!important;box-shadow:0 0 28px #ffaf65!important}
 .presentation[data-role=HEAL] .reaction-core{border-radius:50%!important;background:radial-gradient(circle,#d7fff2,#4ed9a1 70%,#1b7762)!important}
 .presentation[data-role=DEFENSE] .reaction-core,.presentation[data-role=SHIELD] .reaction-core{border-radius:12px 12px 40px 40px!important;background:linear-gradient(135deg,#e4f5ff,#508ed5)!important}
-.role-receipt,#role-receipt,#enemy-receipt{font-weight:900!important;font-size:15px!important}
+.role-receipt,#role-receipt,#enemy-receipt{font-weight:900!important}
 @media(max-width:600px){
- .game{grid-template-rows:40px 240px 168px minmax(0,1fr) 108px!important}
- .battle-hud{grid-template-columns:2fr 1fr!important}
- #enemy-avatar{width:134px!important;height:164px!important;left:0!important;top:62px!important}
- #enemy-panel{padding-left:6px}
- #enemy-panel>.hp-line,#enemy-panel>.enemy-shield,#weakness,#resistance,#enemy-panel>.next,#rescue-chance{margin-left:138px!important}
- #enemy-gimmick{font-size:10px;line-height:12px}
- .enemy-title{min-height:45px}
- .enemy-top{height:52px}
+ .game{}
+ .battle-hud{}
+ #enemy-avatar{}
+ #enemy-panel{}
+ #enemy-panel>.hp-line,#enemy-panel>.enemy-shield,#weakness,#resistance,#enemy-panel>.next,#rescue-chance{}
+ #enemy-gimmick{}
+ .enemy-title{}
+ .enemy-top{}
  .element-card img{transform:scale(1.06)}
- .hp-line{min-height:36px;gap:2px!important;grid-template-columns:1fr!important}
- .hp-line b{text-align:left!important;font-size:13px!important;line-height:14px}
- .hp-line progress{height:8px!important}
- .recipe-card{padding:5px!important;min-width:0!important;flex-basis:calc((100vw - 32px)/3)!important}
- .recipe-card .role-mark{font-size:12px!important;min-height:20px!important;line-height:20px!important}
- .recipe-card .formula{font-size:23px!important;line-height:24px!important}
- .compound-name{font-size:13px!important;line-height:14px!important;min-height:28px!important}
- .recommend-tag{font-size:8px;right:3px;top:3px;padding:1px 3px}
- .effect-summary{font-size:11px!important;line-height:14px!important}
- .reason-summary{font-size:10px;line-height:12px;white-space:nowrap}
- .element-card img{margin-top:16px!important;height:calc(100% - 18px)!important}
- .support-row{height:30px!important;min-height:30px!important}
- .support-row .support-portrait{width:29px!important;height:29px!important}
- .support-row button{min-height:30px!important}
- #enemy-receipt,#role-receipt{font-size:12px!important;line-height:14px!important;white-space:normal!important}
- .player-panel{padding:6px!important}
- .player-panel h2{font-size:13px!important}
+ .hp-line{}
+ .hp-line b{text-align:left!important}
+ .hp-line progress{}
+ .recipe-card{}
+ .recipe-card .role-mark{}
+ .recipe-card .formula{}
+ .compound-name{}
+ .recommend-tag{}
+ .effect-summary{}
+ .reason-summary{}
+ .element-card img{}
+ .support-row{}
+ .support-row .support-portrait{}
+ .support-row button{}
+ #enemy-receipt,#role-receipt{}
+ .player-panel{}
+ .player-panel h2{}
 }
 #presentation[data-role] #presentation-card{background:radial-gradient(circle at 25% 10%,#46557e,#121d38 72%);color:white;border:3px double #a7bcff;box-shadow:0 0 0 5px #17274a99,0 12px 34px #17274a80,inset 0 0 30px #718bff44}
 #presentation[data-role=ATTACK] #presentation-card{border-color:#ffb77a;background:radial-gradient(circle at 25% 10%,#b54f35,#441d32 72%)}

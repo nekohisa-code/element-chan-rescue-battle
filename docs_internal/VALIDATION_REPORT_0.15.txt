@@ -1,0 +1,28 @@
+Prototype 0.15 FINAL UI FIX / LOCAL VALIDATION PASS
+検証日: 2026-10-05
+公開検証は公開後に追記。現時点ではcommit/push前のローカル結果。
+
+PROTECTION: PASS / 1109ファイルSHA256一致。最終修正でdist変更はui015.css/ui015.jsのみ。
+ASSET: PASS / 75実ファイルHTTP200・SHA256一致。旧v=014無し、旧145px指定無し。
+SUPPORT_OVERFLOW: PASS / gauge・label・buttonが全幅でカード内。hiddenによる隠蔽無し。
+SUPPORT_SIZE: PASS / PC114×100、390幅102×94。contain・安全padding、顔/頭部表示。
+ELEMENT_BOOK_MULTI_NEW: PASS / O→Ga→Neの3件。scrollTop778→3892→1120、全件seen完了。
+COMPOUND_BOOK_MULTI_NEW: PASS / 4件、化学式sort変更後も最後まで巡回。詳細タイムライン保存。
+NEW_REVEAL_ORDER: PASS / pending時画像無し、glow→new→unlock→reading→seen。
+NEW_CLOSE_RELOAD: PASS / He単件を未完了でclose、同じQA保存領域のreloadでもHe pending。完了後seen。
+注: QA無しURLは別保存領域のため、その比較は移行検証に用いない。
+TITLE_SCREEN: PASS / 7画像ロード。スマホSTART下端543px、PC643px。LINE3リンク維持。
+PC_1280: PASS / page1280×900、Support card110px、ROLE clip無し。
+PC_1600: PASS / page1600×900、Support card110px、ROLE clip無し。
+INTERMEDIATE_800: PASS / page800×900、Support正常、ROLE正常。
+MOBILE_390x844: PASS / page390×844、enemy全幅、手札4×2、横overflow無し。
+REGRESSION: 12項目すべてPASS（VMロジック実行、詳細FINAL_LOGIC_12.json）。
+12項目には3難易度、3失敗hint、5ボスphase2、ally、PERFECT、ROLE CHAIN、Rank/replay、8 SPECIAL、
+0.14保存移行とリセット設定保持を含む。全項目のiPhone実機テストを意味しない。
+BROWSER_SPECIAL: 8候補表示・stack×N、4新規SPECIAL実発動。Support100%はSPECIAL消費に非干渉。
+前回rebaselineの救出結果・SPECIAL RESCUE・タイトル帰還・通常選択/合成PASSも維持。
+CONSOLE_ERROR: 0（実ブラウザログ）。
+ASSET_404: 0（75ファイルHTTP検査）。
+SAVE_MIGRATION: PASS（VM互換/再読込、ブラウザNEW close/reload）。
+SECRET/PERSONAL_INFO: 公開用コピーをpush前に検査。生ハッシュEvidenceの個人パスは公開しない。
+iPhone実機の最終0.15確認: USER_TEST_PENDING。390×844ブラウザ幅検証と区別。

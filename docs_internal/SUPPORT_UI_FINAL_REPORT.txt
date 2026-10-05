@@ -1,0 +1,11 @@
+SUPPORT_UI: PASS
+DOM placement owner: ui015.js。support-information内にchargeとspecial-buttonを1回配置。
+LAYOUT owner: ui015.css。カード左portrait、右情報/ゲージ/ボタン。
+原因: support.append(charge)が3列gridの4番目へ移し、カード外の次行へ配置していた。
+修正: chargeを情報欄へ、buttonも同欄へ。画像大型化。内容は隠さず実配置。
+初回PC検証: button下端がcardより6px外（高さ不足）。必要内容99px＋内側10pxを計測。
+1回の局所修正: footer高さ予算を128px、Support card110pxへ。再検証全幅PASS。
+1280/1600/800: card下端881px、button875.5px、gauge865.5px。
+390×844: card680..778、button729..773、gauge741.5..760.5、portrait102×94。
+page: PC高さ900、mobile高さ844。中間幅800でも収まり確認。
+Ne/Heの既存画像contain。画像加工・再生成なし。

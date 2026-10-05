@@ -1,0 +1,12 @@
+Prototype 0.15
+・既存0.14を保護した派生版。
+・8 SPECIALと進行解禁、5ボス後半、仲間援護、PERFECT、ROLE CHAIN、best Rescue Rank、再救出演習。
+・表示責任をui015.css/ui015.jsへ集約。旧配置・更新競合を整理。
+・CSS/JSキーを015-rebaseline-20261005へ統一。旧145px余白を排除。
+・サポートのゲージを情報欄へ戻し、発動ボタンも同欄に集約。overflow:hiddenで隠していません。
+・サポート画像をPC114×100、スマホ102×94へ拡大（以前PC94×94、スマホ74×68）。
+・PCのサポート内容必要高99px＋内側10pxに対し、カード110pxを確保。
+・図鑑NEWを現在DOM位置による1本のscroll animationで巡回。
+・順序はscroll→glow→NEW!→解放！→reveal→seen。未完了項目の保存を維持。
+・タイトルを既存7キャラ＋淡色背景＋集合リボンへ。スマホ開始ボタンはfirst viewport内。
+・ゲームロジック・画像・音声は最終UI修正で変更なし。
