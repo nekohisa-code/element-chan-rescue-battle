@@ -1,0 +1,49 @@
+Prototype 0.13 / 2026-10-05 JST
+LOCAL_VALIDATION: PASS
+PUBLIC_VALIDATION: PENDING (公開前のローカル記録。公開後に追記する)
+
+01-03 保護: 独立0.13フォルダ。公開前後に旧版/0.12/118 MASTERのSHA-256を再確認。
+04-10 演出: 順番飛翔・1 / 2進捗維持。淡色不透明gradient、opacity 1、式visibility visible。
+PC/390×844でROLE・式・日本語名・必要元素・進捗を確認。Evidence screenshotsあり。
+11-16 頭部: Ne/H/O/Mg/Ca/Clを含む画像は無改変。共通contain・安全上下余白。
+実戦H/O/Mg/Ca/Cl、Neサポート画像の全体表示を確認。
+17-20 Support: Ne拡大・淡色背景・左画像/右情報。He/Arも同一component。
+Ne実発動、PC Ar配置、スマホNe配置、サポート選択画面を確認。
+21-26 BGM: Story専用Beautiful City (Indieteur / CC0)、src/再生状態を確認。
+Story→雑魚→Boss切替。初回ON、OFF後reloadでStory OFF・paused=true。
+ライセンス/日付/取得URL/クレジット条件をLICENSES_AUDIO.txtへ記録。
+27-34 元素図鑑: 新規118枠・未発見画像0。?・共通シルエット・説明非表示。
+HCl使用後はH/Clのみ登録。Ne選択・手札出現は未登録。Ne発動で登録。
+Ga/In/Sn救出で登録。短いシルエット/FLASH画像演出。実数の進捗表示。
+35-38 化合物: 新規73枠すべて???。初作成時登録・NEW・式/名/組成/科学メモ。
+reload後保持。QA救出3Stage時8/118・3/73、BREAK検証後9/118・4/73。
+39-46 Game feel: 救出成功/仲間化・おすすめ理由/選択光・弱点初ヒット後発見。
+MISSION各Stage3件、★表示と保存。BREAK 0/2→1/2→2/2→行動停止を確認。
+連鎖表示/SE、元素選択順番号と飛翔順一致。
+47-50 Story: Ga/In/Sn前後会話・Stage解放を実ブラウザ確認。台詞は既存原文。
+51 学習: 救出結果に既存elementScienceの元素豆知識1件。
+52-53 LINE: 指定URL・_blank・noopener noreferrer・48pxタップ領域。リンククリック実施。
+外部アプリ側の表示完了は観測できない。ゲーム内hrefは指定値と完全一致。
+54-56 PC: 1280×900・1600×900、ページ幅/高さ一致、主要操作・図鑑・Story/戦闘。
+57-61 Mobile: 390×844、ページ幅390/高さ844。主要戦闘UI縦スクロールなし。
+Ne Support、頭部、式・化合物名・操作ボタンを実画面確認。
+62-64 Save: 独立エンジン環境で0.12 clearedStages/発見/仲間/選択Support移行。
+欠落/不正型のdefaultも確認。新規保存、実ブラウザの発見/MISSION/reload保持。
+65-68 Technical: console error 0。全62実行ファイルHTTP 200・元ファイルhash一致。
+構文チェック全JS。公開前secret/個人環境情報scanを実施してからcommitする。
+69-75 Public: ローカルPASS後のみdocs更新・commit・通常push・Pages反映・実アクセス検証。
+
+境界テストの区別
+Ga/In/Sn救出はqa=boss・enemy=1によるUI/保存/進行境界テスト。
+通常プレイの準備戦→サポート選択→Ga戦も実操作。全難易度・3ボスはエンジン境界検証。
+通常バランス全Stage通しプレイや実機Safari検証を行ったとは主張しない。
+iPhone実機・端末スピーカーの主観評価は未実施。390×844ブラウザ検証とは区別。
+
+修正Evidence
+Gaの暴走抑制フラグが先行処理で消える現象を確認。0.13のみ局所修正。
+固定条件でenergyRise=0、suppressed=true、敵エネルギー不増を再検証。
+古いCSSのforming>strong visibility:hiddenを上書き。最終画面でvisible・opacity 1。
+ブラウザ操作ツールの待機期限切れ1件は、後続状態で正常完了を確認。アプリerrorではない。
+
+Evidence: engine-validation.json / local-http013.json / pc1280.jpg / pc1600.jpg /
+mobile-final.jpg / composition-mobile-final.jpg / composition-pc.jpg / rescue-mobile.jpg

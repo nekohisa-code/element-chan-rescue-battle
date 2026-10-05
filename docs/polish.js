@@ -1,6 +1,6 @@
 /* Local-only 0.12 presentation layer, inherited from 0.11. */
 (function(){'use strict';
- const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href='polish.css?v=011p';document.head.append(stylesheet);
+ const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href='polish.css?v=013';document.head.append(stylesheet);
  const $=id=>document.getElementById(id),reduced=()=>matchMedia('(prefers-reduced-motion:reduce)').matches,wait=ms=>new Promise(r=>setTimeout(r,ms));
  $('shield-value').parentElement.firstChild.textContent='🛡盾 ';
  const E=STAGE_ENGINE,oldApply=E.apply,oldEnemy=E.enemy,oldBegin=E.beginBoss;
@@ -11,7 +11,7 @@
  E.enemy=function(s,...args){const out=oldEnemy.call(this,s,...args);requestAnimationFrame(()=>{paintBreak(s,!!breakView?.broken);if(out.dealt)burst($('player-panel'),out.dealt+'ダメージ','damage');if(out.blocked||out.reduced){$('player-panel').classList.add('guard-hit');setTimeout(()=>$('player-panel').classList.remove('guard-hit'),1000);}});return out;};
  E.beginBoss=function(s,...args){const out=oldBegin.call(this,s,...args);breakView=null;clearTimeout(breakTimer);requestAnimationFrame(()=>paintBreak(s));return out;};
  const OriginalAudio=AudioController;
- window.AudioController=class extends OriginalAudio{constructor(){super();this.phase='warmup';this.setPhase('warmup');}setPhase(phase){this.phase=phase;const path=phase==='boss'?'assets/audio/battle_theme.mp3':'assets/audio/meadow_adventure.wav';this.bgm.volume=phase==='boss'?.16:.14;if(this.bgm.getAttribute('src')===path)return;this.bgm.pause();this.bgm.setAttribute('src',path);this.bgm.load();document.documentElement.dataset.bgmTrack=phase;if(this.started&&this.bgmEnabled)this.startBgm();}};
+ window.AudioController=class extends OriginalAudio{constructor(){super();this.phase='warmup';this.setPhase('warmup');}setPhase(phase){this.phase=phase;const path=phase==='story'?'assets/audio/story_adventure.mp3':phase==='boss'?'assets/audio/battle_theme.mp3':'assets/audio/meadow_adventure.wav';this.bgm.volume=phase==='story'?.09:phase==='boss'?.16:.14;if(this.bgm.getAttribute('src')===path)return;this.bgm.pause();this.bgm.setAttribute('src',path);this.bgm.load();document.documentElement.dataset.bgmTrack=phase;if(this.started&&this.bgmEnabled)this.startBgm();}};
  const phaseBegin=E.beginBoss,phaseCreate=E.create;
  E.create=function(...args){const s=phaseCreate.apply(this,args);window.dispatchEvent(new CustomEvent('battle-phase',{detail:'warmup'}));return s;};
  E.beginBoss=function(...args){const s=phaseBegin.apply(this,args);window.dispatchEvent(new CustomEvent('battle-phase',{detail:'boss'}));return s;};

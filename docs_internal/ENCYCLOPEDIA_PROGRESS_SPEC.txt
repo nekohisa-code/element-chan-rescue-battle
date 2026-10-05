@@ -1,0 +1,23 @@
+Prototype 0.13 / 図鑑仕様
+
+ELEMENT_BOOK: 原子番号順118枠。現在画像付きKnownデータ22種。
+未発見は共通シルエット・?・???・原子番号のみ。画像・名前・科学説明を出さない。
+未実装元素のMASTER画像はコピー・公開しない。
+UNLOCK: 正常組成に使用 / サポート実発動 / ボス救出成功。
+手札出現・サポート選択・ボス遭遇だけでは未解放。
+登録通知の画像は暗いシルエット→短いFLASH→通常表示。reduced-motionでは静止。
+開いた図鑑に元素記号・元素名・原子番号・既存elementScienceを表示。
+
+COMPOUND_BOOK: 分母はSTAGE_DATA.compounds.length（現在73）。
+未発見は式???・名???・まだ作ったことがない旨のみ。
+正常組成完成後、NEW通知と組成・既存科学説明。以後は図鑑で詳細表示。
+同一レシピは重複登録しない。タイトルに両図鑑の実数を表示。
+
+SAVE: element012-progressを継承し、element013-collectionへ追加情報を保存。
+追加: discoveredElements、discoveredWeaknesses、stageMissions。
+旧発見化合物の構成元素と救出済み元素は実績Evidenceとして移行。
+過去の未保存サポート発動は推測で登録しない。
+QAはelement012-qa-progress / element013-qa-collectionへ分離。
+BGM設定はelement013-bgmにbooleanで保存。
+進捗は端末/ブラウザ/originごと。サーバー送信・アカウントなし。
+弱点・MISSION・戦闘効果は科学的性質ではなくゲーム専用データ。

@@ -1,0 +1,13 @@
+Prototype 0.13 / MISSION仕様
+
+STAGE 1: サポートを1回 / 盾か守りを1回 / BREAK
+STAGE 2: 回復を1回 / サポートを1回 / BREAK
+STAGE 3: 盾か守りを1回 / サポートを1回 / BREAK
+
+初期☆、達成★。最大3件。敵HUD下で確認。
+正常な化合物完成のROLE、実サポート発動、実BREAKを条件とする。
+同一Stage内の実績として保存し、再プレイ・再読込でも保持。
+失敗した組成や未発動の選択では達成しない。
+報酬は達成マークのみ。通貨・ショップ・ガチャなし。
+データ: COLLECTION013.missions / mission / state.stageMissions。
+保存: element013-collection、QAは別キー。

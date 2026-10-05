@@ -1,0 +1,16 @@
+Prototype 0.13 / Story専用BGM
+
+曲名: Beautiful City
+作者: Indieteur
+取得元・条件: LICENSES_AUDIO.txt参照。
+配布元が明記するhappy/adventure/bright/ambientのインストゥルメンタル。
+CC0、クレジット不要（任意作者表記を同梱）。無料取得、外部サービス追加なし。
+取得日: 2026-10-05 JST
+MP3は無改変、ゲーム内再生音量0.09。
+Storyユーザー操作 → Story専用曲 → 雑魚曲 → Boss曲。
+TITLEでは自動再生しない。Story開始操作で再生を試みる。
+初回BGM ON。OFF設定はlocalStorageへ保存して尊重。
+StoryにもBGMボタン。iOSではブロックされた場合にON操作で再試行可能。
+実ブラウザのaudio.paused=false、src切替、OFF後reloadでpaused=trueを確認。
+端末スピーカーでの主観的音質・音量評価と実機Safariは別途ユーザー評価。
+新しいSEは作らず、既存ライセンス確認済みSEを利用。
