@@ -1,6 +1,6 @@
 Prototype 0.14 VALIDATION REPORT
 日付: 2026-10-05 JST
-STATUS: LOCAL PASS / PUBLIC PENDING
+STATUS: PASS
 公開URL: https://nekohisa-code.github.io/element-chan-rescue-battle/
 
 検証方法
@@ -36,14 +36,23 @@ C/H/O各1スタック、常に×N（×1も表示）、3回飛翔。通常手札�
 0.13/既存0.12由来の不足フィールド補完、既存進行保持、新規ゲーム、A/Bリセット、再読込を独立保存テストと実操作で確認。
 78–84 PC/Mobile: PASS
 1280×900・1600×900・390×844の主要戦闘画面で縦/横ページスクロールなし。モバイルの下部操作が候補/手札と重ならないよう修正して再検証。完成パネルの式・名前・ROLE・進捗が読める。図鑑は専用モーダル内をスクロール。
-85–88 TECH: LOCAL PASS / PUBLIC SCAN PENDING
+85–88 TECH: PASS
 実ブラウザconsole error 0。ローカル69配信ファイルHTTP200・SHA一致。82レシピの係数/構成元素一致。新規6通常レシピ・3SPECIALはPubChem/NCBIの式/名称をQC。危険な実験手順なし。新規素材取得/画像生成/installなし。
-89–97 PUBLIC: PENDING
-公開前ローカル検証完了後、公開用docsにコピーし、差分・個人情報・秘密情報の検査、通常commit/push、Pages反映、公開URL実操作で検証する。完了時に本欄を更新する。
+89–97 PUBLIC: PASS
+差分検査、個人情報/秘密情報/相対パス検査PASS（findings 0）。履歴を保持した通常commit/push成功。GitHub Pages main / docs、HTTPS有効、built commit d213de4efb7f9e0ee251c60e6d6b5be2b5dffbee。
+公開全69ゲームファイルをHTTP200・Git commitのバイト列とSHA一致で確認。CSS/画像/音源/JavaScriptを含む。旧0.13通常保存の図鑑6/118・3種が0.14の6/118・3/82へ移行。
+公開QAでStory1→5を連続救出し、Ga/In/Sn/Si/Znの仲間化と学習カードを実確認。Sn救出後会話あり。5段階の遷移確認はenemy=1の境界検証。
+公開版中級の未発見式???、未発見自動選択禁止、弱点HIT後の正式表示、オーラ、OFFの再読込保存とON時だけ選択を確認。上級の未発見弱点???から正式表示への更新も確認。
+公開SPECIAL3種を全て発動。中級の未発見式???、上級の式/名前???、3スタック飛翔、×N表示、回復/42ダメージ/盾等の効果、NEW登録を確認。
+公開図鑑118枠・NEW順番確認・全sort操作。公開Aは9/118・5/82を保持、公開Bは0/118・0/82へ戻り、再読込保持。すべてQA保存のみ。通常公開保存領域6/118・3/82は未消去。
+公開PC1280×900/1600×900・Mobile390×844の主要戦闘画面でページscrollWidth/Height=viewport。公開実ブラウザconsole error 0。
+報告書更新の追加commitはゲーム本体を変更しない。最終commitはGitHub履歴/最終回答参照。
 
 Evidence（非公開ローカル）
 evidence/engine014.json: 独立エンジン9項目PASS
 evidence/http014.json: 全配信ファイル検査
+evidence/public-http014.json: 公開全69ファイルのHTTP/SHA検査
+evidence/public-browser014.json: 公開実操作の結果
 evidence/protection-before.json: 保護対象の開始時ハッシュ
 Evidence screenshots: PC、390×844、SPECIAL、Si救出戦、図鑑NEW。
 
