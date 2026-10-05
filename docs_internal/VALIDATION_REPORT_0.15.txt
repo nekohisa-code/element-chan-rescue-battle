@@ -26,3 +26,18 @@ ASSET_404: 0（75ファイルHTTP検査）。
 SAVE_MIGRATION: PASS（VM互換/再読込、ブラウザNEW close/reload）。
 SECRET/PERSONAL_INFO: 公開用コピーをpush前に検査。生ハッシュEvidenceの個人パスは公開しない。
 iPhone実機の最終0.15確認: USER_TEST_PENDING。390×844ブラウザ幅検証と区別。
+PUBLIC VALIDATION: PASS
+GAME_COMMIT: 6005f6e15fcee20fd8c9c825f1c1a8462107ed82
+Pages: main / docs、built確認。標準HTTPS URLを通常reloadしてPrototype 0.15・7画像を実確認。
+PUBLIC_HTTP: 200。75ファイル全HTTP200、公開内容一致（GitのCRLF/LF正規化を許容）。
+PUBLIC_STORY: PASS（Story 1導入とGa救出後会話）。
+PUBLIC_BATTLE: PASS（通常HCl合成→準備戦浄化→サポート選択→Gaボス）。
+PUBLIC_BOOKS: PASS（118元素slots、87化合物）。
+PUBLIC_SPECIAL: PASS（8候補、エタノール×N飛翔→SPECIAL RESCUE→Ga仲間化→GREAT RESCUE）。
+PUBLIC_PC: 1280×900、1600×900 page高さ900。ROLEとSupportゲージ/ボタンがカード内。
+PUBLIC_MOBILE: 390×844。救出結果buttons792..834、page390×844。
+PUBLIC_CONSOLE_ERROR: 0。
+SECRET/PERSONAL_INFO: PASS（公開101ファイル、画像/音源metadata含むfindings0）。
+PUBLIC_UPDATE_PERFORMED: YES。force push無し、旧公開版はGit履歴に保持。
+旧ページがブラウザcacheに残る場合は通常の再読み込みで更新。cache削除やSW解除は実施していません。
+最終iPhone実機プレイ評価のみUSER_TEST_PENDING（公開アクセス可能、実機評価は幅検証と区別）。
