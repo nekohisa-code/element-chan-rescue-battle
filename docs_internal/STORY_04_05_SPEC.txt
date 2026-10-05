@@ -1,0 +1,27 @@
+STORY4 Si / ケイ素 / 原子番号14
+人格Evidence: 四コマ元素ちゃん設定 Na-Ca_10元素_化学調査とキャラクター初期設定_DRAFT_2026-09-23.txt、14 Siの本文。
+H～Zn APPROVEDはGa-Zr_10元素_承認更新とキャラクター初期設定_DRAFT_2026-09-23.txtの承認更新記録。
+Si: 僕/きみ、条件分岐の短い普通体、中速、論理的・基盤志向・切替上手。
+ゲーム派生: 道を増やしすぎて決められない→仲間と一つずつ見る。
+Battle: 弱点切替/迷いの波/考えすぎの波。BREAKで行動停止。
+STAGE3クリアで解放。救出後Si登録、STAGE5でSi使用可。
+
+STORY5 Zn / 亜鉛 / 原子番号30
+人格Evidence: 上記Ga-Zr承認記録のH～Zr横断比較、Zn APPROVED行。
+Zn: 僕、穏やかな保全口調、中速、献身・現実・保全、点検役。
+二人称と個別関係性の全文はUNKNOWN。新しい二人称や正本上の関係性は作らない。
+ゲーム派生: 見回りで守り続ける→みんなで守って一緒に歩く。
+Battle: 盾展開/守りの波/休む。既存エンジンのguardルールを使用。
+STAGE4クリアで解放。救出後Zn登録、クリア済みStage再プレイで使用可。
+
+Sn救出後: ユーザー承認済み7行を0.13からそのまま維持。
+ゲーム派生の会話・暴走は4コマ正本へ逆輸入しない。
+今後の選定: 実在化合物を有効追加できる元素を優先。十分展開後に他元素を検討。
+STORY6以降は今回作成しない。
+
+QC: SiO2 二酸化ケイ素/酸化物/Si1 O2、SiCl4 四塩化ケイ素/塩化物/Si1 Cl4。
+ZnO 酸化亜鉛/酸化物/Zn1 O1、ZnCl2 塩化亜鉛/塩化物/Zn1 Cl2。
+ZnS 硫化亜鉛/硫化物/Zn1 S1、Zn(OH)2 水酸化亜鉛/水酸化物/Zn1 O2 H2。
+照合: PubChem Silicon-Dioxide / Silicon-tetrachloride / Zinc-oxide / Zinc-Chloride /
+zinc_sulfide / Zinc-hydroxide、NCBI Bookshelf NBK600540 Table4-1。2026-10-05確認。
+参照URLは各recipe.sourceに明示。危険な実験手順は掲載しない。

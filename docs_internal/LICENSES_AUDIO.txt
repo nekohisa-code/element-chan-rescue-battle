@@ -1,0 +1,36 @@
+Prototype 0.13 / 公開ゲーム音源
+
+Story BGM: Beautiful City
+作者: Indieteur
+配布元: https://opengameart.org/content/beautiful-city
+取得元: https://opengameart.org/sites/default/files/Beautiful%20City.mp3
+ファイル: assets/audio/story_adventure.mp3
+ライセンス: CC0 1.0 Universal
+https://creativecommons.org/publicdomain/zero/1.0/
+取得日・配布元ライセンス確認日: 2026-10-05 JST
+クレジット不要（配布元明記）。任意クレジットとして作者を記載。
+Webゲーム組込み、GitHub Pagesでの配信、商用利用可能。
+SHA-256: 4efb88cfd1484c22c00c92fde9d5cc1bfe849149ecde3a079f1bd33aad1f47d4
+無改変MP3。ゲームの再生音量のみ0.09へ設定。
+
+ボスBGM: Battle Theme
+作者: Wolfgang_ (Theodore Kerr)
+配布元: OpenGameArt.org
+https://opengameart.org/content/battle-theme-0
+ファイル: docs/assets/audio/battle_theme.mp3
+ライセンス: CC0 1.0 Universal
+https://creativecommons.org/publicdomain/zero/1.0/
+公開準備時確認日: 2026-10-05 JST
+既存ファイルを無改変で使用。任意クレジットとして作者を記載。
+
+雑魚BGM: meadow_adventure.wav
+本作専用オリジナル数式合成音、外部サンプルなし。
+作者表記: 理系ねこラボ向けCodex制作 / CC0 1.0
+
+SE: select.wav / deselect.wav / success.wav / fail.wav /
+new_discovery.wav / draw.wav / shuffle.wav / enemy_hit.wav /
+player_hit.wav / victory.wav
+本作専用オリジナル数式合成音、外部サンプルなし。
+作者表記: 本作向けCodex制作 / CC0 1.0
+
+古い履歴BGMは公開用同梱対象から除外。

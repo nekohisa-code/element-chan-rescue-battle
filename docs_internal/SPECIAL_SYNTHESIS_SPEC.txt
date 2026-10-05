@@ -1,0 +1,19 @@
+独立SPECIALゲージ。既存Support活性化(charge)は変更しない。
+通常成功: +7。耐性攻撃: +4。初級はさらに+3。
+弱点攻撃bonus+11、別化合物連鎖bonus+15、BREAK bonus+22。高いbonus1つのみ。
+失敗組成はE.applyを呼ばず増加なし。上限100、使用で0。各Stage開始0。
+研究条件: C/H/Oすべて元素図鑑発見済み。手札枚数は消費しない大型分子専用方式。
+グルコース C6H12O6 / C6 H12 O6 / 回復45+Support活性化10。
+エタノール C2H6O / C2 H6 O1 / 攻撃42+次の敵威力30%低下。
+スクロース C12H22O11 / C12 H22 O11 / 回復22+盾20。
+これらはゲーム効果。実際の化学作用・人体効果ではない。
+1種類1代表キャラ・×N・3回飛翔(各650ms)。読み取り1000ms+技飛翔500/650ms。
+大型分子を通常手札/通常候補へ混入しない。24/45回飛翔なし。
+初回成功でfound・specialDiscovered・図鑑NEWキューへ登録。
+再使用はゲージ再蓄積後。研究前や未満ゲージでは発動不可。
+reduced motion時は飛翔1ms、粒子/揺れ/光のアニメーション停止。
+科学QC: PubChem CID5793/CID702/CID5988、2026-10-05確認。
+https://pubchem.ncbi.nlm.nih.gov/compound/Glucose
+https://pubchem.ncbi.nlm.nih.gov/compound/C2H5OH
+https://pubchem.ncbi.nlm.nih.gov/compound/sucrose
+エタノールには同じ分子式の異なる構造もある。分子式のみで物質の全構造は特定しない。

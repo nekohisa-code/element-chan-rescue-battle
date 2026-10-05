@@ -1,0 +1,11 @@
+0.12 progress keyを互換維持、0.13 collectionを初回だけ0.14 collectionへコピー。
+追加領域: element014-collection (QAは隔離element014-qa-collection)。
+default: NEW queues [], recommendAutoSelect true, specialGauge0, specialDiscovered[], resetVersion0。
+救出/使用済み化合物の構成元素は移行Evidenceとして継承。NEW再演出はしない。
+clearedStagesの有効範囲を1～5へ拡張。既存1～3を保持。
+RESET A: clearedStages/rescued/unlockedを空へ。図鑑/弱点/MISSION/NEW履歴は保持。
+RESET B: 上記+図鑑/弱点/MISSION/NEW/SPECIALを空へ。環境preferences保持。
+旧legacy rescuedを毎回読み足さないため、リセット後に仲間が勝手に復活しない。
+戦闘途中の手札/HPは保存・再開しない(既存仕様)。SPECIALゲージもStage開始で0。
+エンジン隔離テスト: 旧保存の継承、欠落default、A/B、reload PASS。
+実ブラウザ: A後図鑑保持、B後0/118・0/82、reload保持を確認。
