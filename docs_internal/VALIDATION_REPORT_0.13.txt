@@ -1,8 +1,10 @@
 Prototype 0.13 / 2026-10-05 JST
 LOCAL_VALIDATION: PASS
-PUBLIC_VALIDATION: PENDING (公開前のローカル記録。公開後に追記する)
+PUBLIC_VALIDATION: PASS
+PUBLIC_REPORT_FINALIZED: YES
 
-01-03 保護: 独立0.13フォルダ。公開前後に旧版/0.12/118 MASTERのSHA-256を再確認。
+01-03 保護: 独立0.13フォルダ。旧版/0.12/118 MASTERを含む889ファイルのSHA-256一致。
+実行中サーバーの追記ログ2件は保護ゲームファイルとは別に扱う。
 04-10 演出: 順番飛翔・1 / 2進捗維持。淡色不透明gradient、opacity 1、式visibility visible。
 PC/390×844でROLE・式・日本語名・必要元素・進捗を確認。Evidence screenshotsあり。
 11-16 頭部: Ne/H/O/Mg/Ca/Clを含む画像は無改変。共通contain・安全上下余白。
@@ -30,8 +32,20 @@ Ne Support、頭部、式・化合物名・操作ボタンを実画面確認。
 62-64 Save: 独立エンジン環境で0.12 clearedStages/発見/仲間/選択Support移行。
 欠落/不正型のdefaultも確認。新規保存、実ブラウザの発見/MISSION/reload保持。
 65-68 Technical: console error 0。全62実行ファイルHTTP 200・元ファイルhash一致。
-構文チェック全JS。公開前secret/個人環境情報scanを実施してからcommitする。
-69-75 Public: ローカルPASS後のみdocs更新・commit・通常push・Pages反映・実アクセス検証。
+構文チェック全JS。公開対象secret/個人環境情報scan PASS、検出0件。
+69-75 Public: ローカルPASS後にdocs更新・commit・通常push・Pages反映・実アクセス検証。
+PUBLIC_URL: https://nekohisa-code.github.io/element-chan-rescue-battle/
+CODE_RELEASE_COMMIT: 043c8506d1ca8dcc95c006b0c0cc16088dcb0e70
+DEPLOY: main / docs / branch deployment
+公開実行ファイル62件: HTTP 200、Git commit内の内容とSHA-256完全一致。
+公開PC 1280×900 / 1600×900、Mobile 390×844: PASS、主要戦闘ページ縦スクロールなし。
+公開画像読み込み正常、Story冒険BGM→雑魚→ボスBGM再生状態・切替を確認。
+公開Story開始、準備戦2回の組成完成→Ga戦、Ne実発動、防御/Support MISSION★を確認。
+公開旧0.12セーブの実UI移行: H/Cl 2/118、HCl 1/73。
+公開実プレイ後reload: 6/118、3/73。図鑑数は個別ブラウザの保存データであり全ユーザー共通値ではない。
+公開元素図鑑118枠、化合物73枠、未発見内容非公開を確認。
+PUBLIC_CONSOLE_ERROR: 0
+PUBLIC_ASSET_404: 0
 
 境界テストの区別
 Ga/In/Sn救出はqa=boss・enemy=1によるUI/保存/進行境界テスト。
@@ -45,5 +59,7 @@ Gaの暴走抑制フラグが先行処理で消える現象を確認。0.13の�
 古いCSSのforming>strong visibility:hiddenを上書き。最終画面でvisible・opacity 1。
 ブラウザ操作ツールの待機期限切れ1件は、後続状態で正常完了を確認。アプリerrorではない。
 
-Evidence: engine-validation.json / local-http013.json / pc1280.jpg / pc1600.jpg /
-mobile-final.jpg / composition-mobile-final.jpg / composition-pc.jpg / rescue-mobile.jpg
+Evidence: engine-validation.json / local-http013.json / public-http013.json /
+pc1280.jpg / pc1600.jpg / mobile-final.jpg / composition-mobile-final.jpg /
+composition-pc.jpg / rescue-mobile.jpg / combo.jpg / public-pc.jpg /
+public-composition-pc.jpg / public-mobile.jpg
