@@ -1,4 +1,4 @@
-Prototype 0.13 / 公開ゲーム音源
+Prototype 0.16 / 公開ゲーム音源（0.15の音源を無改変で維持）
 
 Story BGM: Beautiful City
 作者: Indieteur

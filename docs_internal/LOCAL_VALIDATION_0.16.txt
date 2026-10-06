@@ -1,0 +1,54 @@
+STATUS: PASS
+VERSION: Prototype 0.16
+SCOPE: ローカル実ブラウザ・ロジック・静的配信検証（公開後結果は最終報告に別記）
+
+保護: 1290ファイルSHA-256一致。118 MASTER PNG総数118、人格正本・旧版・マイキャラ原本未変更。
+STORY: S / Cl / K / Mn / B / Si / Zn / Sn / Ga / Inの順。
+実ブラウザのQA用保存領域でStory 1～10の導入→合成→救出後→Resultを通して確認。
+Story 10: 第1章 COMPLETE / 救出した元素ちゃん 10 / 118を表示。
+新規5体: 各ボス画像・日本語名・原子番号・固有行動・会話・救出登録表示。
+タイトル: PC横長とスマホ縦長の別画像。顔と文字・開始ボタンの重なりなし。
+
+COMPOUNDS: 全96種の式/原子数一致、通常8カード以下。新規9種の照合・図鑑登録PASS。
+KMnO4の実合成、H3NO·HClの長い名称の表示を確認。
+塩化ヒドロキシルアンモニウムは水素4個、N/O/Cl各1個。名前がカード内で欠けない。
+SPECIAL: 8種類の研究。スマホ2列×2段/4件ずつ、2ページ、横送り正常。
+PC: 4列×2段。モーダル内の文字に欠けなし。
+尿素を第2ページから実発動。4元素スタック表示、SPECIAL0% / Support100%で独立確認。
+
+UI: PC1280×900・1600×900・Mobile390×844、主要Battleにページ縦/横overflowなし。
+Mobile: 手札4×2、主要操作下端805px、下側安全余白。情報・フォントを削っていない。
+手札画像は固定ラベル上部用の空白を取り戻し、同じタップ領域でcontain表示を拡大。
+長い化合物名、ROLE、HP、盾、BREAK、救出チャンス、NEXT、MISSION、Support/SPECIAL維持。
+タイトル・図鑑の内容スクロールは許可。物理iPhone実機最終確認は未実施。
+
+NEW: 本物の内容を伏せる→スクロール→glow120ms→NEW180ms→解放220ms
+→内容公開・読書450ms→seen保存→次へ。スクロール280msと間隔100ms。
+0.15より少し高速、1件およそ1.35秒。解放時のdiscover SEは実ブラウザでplayed。
+元素複数NEWの順次完了、化合物のNEW/unlock/reading/seen順を実測。
+スキップは表示中の図鑑だけ残りを解放・seen保存。再読込後にpending0、登録内容保持。
+
+回帰ロジック12群PASS:
+1 レシピ数/通常9追加/SPECIAL8
+2 全式係数/名前/実素材/8カード制約
+3 10Story/3難易度/安全な初期弱点/後半ギミック
+4 旧0.15保存移行/旧保存無書込み
+5 救出で元素・レシピ解放/再救出
+6 新9レシピの合成・元素/化合物登録
+7 PERFECT/ROLE CHAIN維持
+8 各難易度の3失敗ヒント1回
+9 全8SPECIAL再使用/Support独立
+10 援護1回/救出Rank/保存
+11 NEW seen保存/再起動
+12 リセットA/B/環境設定保持
+
+実UI: 初級/中級/上級、未発見の式・名前・弱点ヒント差を維持。
+Neサポート発動、雑魚→ボス進行、上級の敗北Result、タイトル帰還確認。
+BGM: Story/雑魚/ボス切替維持。ボスaudio readyState4、playing確認。新規取得なし。
+静的配信: 全84ファイルHTTP200、応答ハッシュ=dist。欠損0。
+console error: 0
+secret/personal-info scan: PASS（公開対象ソース・画像/音声metadata）。
+
+Evidence: ENGINE_0.16.json / PROTECTION016.json / STATIC_AUDIT016.json /
+LOCAL_HTTP016.json / STORY_1_10_BROWSER.json / VIEWPORT_MATRIX016.json /
+NEW_COMPOUND_SEQUENCE.json / NEW_SKIP_COMPOUND.json / 各画面スクリーンショット。

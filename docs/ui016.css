@@ -1,0 +1,24 @@
+/* 0.16 additions only. Established 0.15 battle layout retains its single owner. */
+.title016{display:block;padding:0;overflow:visible;background:#e9f7ff;box-shadow:0 8px 24px #19394720}
+.title016 picture{display:block;width:100%;border-radius:22px 22px 0 0;overflow:hidden}
+.title016 img{width:100%;height:auto;max-height:390px;object-fit:contain;padding:0;display:block}
+.title-copy016{padding:12px;background:linear-gradient(120deg,#f9fff4,#e6f6ff);border-radius:0 0 22px 22px}
+.title-copy016 h1{font-size:30px;line-height:1.1}.title-copy016 h1 br{display:none}.title-copy016 .subtitle{margin-top:5px}
+.stage-picker{display:flex;overflow-x:auto;scroll-snap-type:x proximity;padding:2px 0 6px;gap:6px}
+.stage-picker button{flex:0 0 166px;scroll-snap-align:start;min-height:68px;display:grid;gap:2px}.stage-picker button span{font-size:13px}.stage-picker button small{font-size:10px}
+.special-page016{display:contents}.special-nav016{display:none}
+#book-skip016{min-height:36px;font-size:12px;padding:4px 8px;margin-left:auto;position:sticky;top:4px}
+.chapter016{font-size:16px;font-weight:900;color:#865a0b;background:#fff1be;border-radius:8px;padding:5px;margin:4px 0}
+@media(max-width:700px){
+ .game{grid-template-rows:36px auto 154px minmax(156px,1fr) 156px;gap:3px;padding:4px 6px max(34px,env(safe-area-inset-bottom))}
+ .action-bar{grid-template-rows:90px 15px 36px}#support-portrait{height:88px;min-height:0}
+ /* Keep the full character large inside the existing tap area; the identity badge owns the left corner. */
+ .element-card img{top:3px;left:18%;width:80%;height:calc(100% - 6px);padding:3px;object-fit:contain}
+ .title016 picture{height:310px;background:#e9f7ff}.title016 img{height:100%;max-height:none;object-fit:contain}.title-copy016{padding:8px}.title-copy016 h1{font-size:22px}.title-copy016 .subtitle{font-size:11px}
+ .stage-picker button{flex-basis:132px;min-height:64px}.stage-picker{margin:6px 0}.title{padding:6px 10px}.eyebrow{margin:0 0 4px}
+ .special-nav016{display:flex;gap:8px;align-items:center;justify-content:space-between;margin:4px 0 8px}.special-nav016 button{min-width:44px;min-height:36px}.special-nav016 span{font-size:12px}
+ .special-pages016{display:flex;gap:0;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;scrollbar-width:thin;overscroll-behavior-x:contain;padding-bottom:7px}
+ .special-page016{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto;gap:6px;flex:0 0 100%;min-width:0;scroll-snap-align:start;padding:0 2px}
+ .special-page016 button{min-height:174px;height:auto}.library015 #modal-content{overflow-y:auto;overflow-x:hidden}
+ #book-skip016{font-size:11px;min-height:34px}.book-controls{align-items:center}#book-tour015{max-width:100%}
+}

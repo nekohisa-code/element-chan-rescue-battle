@@ -1,0 +1,47 @@
+Prototype 0.16 / 名称・式・組成 QC / 確認日 2026-10-06 JST
+対象: 新規9通常レシピ + 指定された既存3レシピ。
+全96登録レシピの式を解析し、needs原子数と一致することも別途自動検証。
+通常合成は8カード以内、SPECIALは元素種類ごとのスタックです。
+化学分類と戦闘ROLEは別。ゲーム効果は科学的作用を意味しません。
+
+KCl / 塩化カリウム / K1 Cl1 / 塩化物 / ATTACK
+https://fujifilmbiosciences.fujifilm.com/us/potassium-chloride.html
+KOH / 水酸化カリウム / K1 O1 H1 / 水酸化物 / SHIELD
+https://labchem-wako.fujifilm.com/jp/product/detail/W01W0116-2181.html
+KNO3 / 硝酸カリウム / K1 N1 O3 / 硝酸塩 / COMBO_SUPPORT
+https://www.famic.go.jp/ffis/fert/sub6_data/bunshikiryotable.html
+KClO3 / 塩素酸カリウム / K1 Cl1 O3 / その他 / ATTACK
+https://labchem-wako.fujifilm.com/jp/product/detail/W01W0116-1705.html
+塩化物ではない。4すくみへ無理に分類せず等倍。
+KMnO4 / 過マンガン酸カリウム / K1 Mn1 O4 / その他 / ATTACK
+https://labchem-wako.fujifilm.com/jp/product/detail/W01W0116-0419.html
+過マンガン酸塩。酸化物へ文字列だけで分類せず等倍。
+MnO2 / 二酸化マンガン / Mn1 O2 / 酸化物 / DEFENSE
+https://www.nies.go.jp/kisplus/dtl/chem/SJS00072
+H3BO3 / ホウ酸 / H3 B1 O3 / その他 / UTILITY
+https://labchem-wako.fujifilm.com/jp/product/spec_02-0219.pdf?jeAttribute=J
+配布元表記「ほう酸」を、元素名ホウ素と統一した「ホウ酸」で表示。
+NaBH4 / 水素化ホウ素ナトリウム / Na1 B1 H4 / その他 / ATTACK
+https://www.tcichemicals.com/JP/ja/p/S0480
+水素化ホウ素ナトリウムを採用。テトラヒドロほう酸ナトリウム等は同物質の別名。
+H3NO·HCl / 塩化ヒドロキシルアンモニウム / H4 N1 O1 Cl1 / 塩化物 / UTILITY
+https://www.tcichemicals.com/JP/ja/p/H1581
+CAS 5470-11-1。配布元の式表記を採用。水素は3+1=4、合計7原子。
+塩酸ヒドロキシルアミンは別名。同じものを重複レシピにしない。
+
+既存維持・指定再確認
+H2SO4 / 硫酸 / H2 S1 O4
+https://labchem-wako.fujifilm.com/sds/W01W0119-0543JGHEEN.pdf
+SnCl2 / 塩化スズ(II) / Sn1 Cl2
+https://labchem-wako.fujifilm.com/jp/product/detail/W01W0120-0158.html
+無水物。SnCl2·2H2Oと混同しない。「すず」と「スズ」は同元素の表記差。
+SnCl4 / 塩化スズ(IV) / Sn1 Cl4
+https://www.tcichemicals.com/JP/ja/p/T2053
+https://webbook.nist.gov/cgi/cbook.cgi?ID=C7646788&Mask=6FF
+四塩化スズと同じ物質。水和物を別物として混同しない。
+
+Story連携
+Cl救出で塩化物系、K救出でKCl/KOH/KNO3/KClO3、Mn救出でMnO2/KMnO4、
+B救出でH3BO3/NaBH4、以降Si/Zn/Sn/Ga/In関連レシピが使用可能。
+既存SO2/H2S/硫化物、HCl/NaCl、SiO2/SiCl4、Zn系、Sn系は重複追加せず維持。
+危険な実験手順や使用方法は収録しない。

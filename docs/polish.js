@@ -1,6 +1,6 @@
 /* Local-only 0.12 presentation layer, inherited from 0.11. */
 (function(){'use strict';
- const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href='polish.css?v=015-rebaseline-20261005';document.head.append(stylesheet);
+ const stylesheet=document.createElement('link');stylesheet.rel='stylesheet';stylesheet.href='polish.css?v=016-release-20261006';document.head.append(stylesheet);
  const $=id=>document.getElementById(id),reduced=()=>matchMedia('(prefers-reduced-motion:reduce)').matches,wait=ms=>new Promise(r=>setTimeout(r,ms));
  $('shield-value').parentElement.firstChild.textContent='🛡盾 ';
  const E=STAGE_ENGINE,oldApply=E.apply,oldEnemy=E.enemy,oldBegin=E.beginBoss;
