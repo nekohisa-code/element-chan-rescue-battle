@@ -1,0 +1,7 @@
+(function(root){'use strict';const D=root.STAGE_DATA,E=root.STAGE_ENGINE,C=root.COLLECTION013;const old={create:E.create,apply:E.apply};
+E.create=function(...args){const s=old.create(...args);s.specialGauge=0;s.specialUses=0;const q=new URLSearchParams(location.search);if(q.has('qa')&&q.has('synthesis')){s.specialGauge=100;C.register(['C','H','O']);}return s};
+E.apply=function(s,r,...args){const out=old.apply(s,r,...args),base=out.mult<1&&r.role==='ATTACK'?4:7,bonus=out.broken?22:out.chain>1?15:out.mult>1&&r.role==='ATTACK'?11:0;const difficulty=s.difficulty.id==='beginner'?3:0;s.specialGauge=Math.min(100,s.specialGauge+base+bonus+difficulty);C.state.specialGauge=s.specialGauge;C.save();return out};
+function research(){return D.specialRecipes.filter(r=>Object.keys(r.needs).every(s=>C.state.discoveredElements.includes(s)))}
+function apply(s,r){if(s.specialGauge<100||!research().some(x=>x.id===r.id))return null;s.specialGauge=0;s.specialUses++;C.state.specialGauge=0;const e=r.roleEffect,heal=Math.min(e.heal||0,s.difficulty.playerHp-s.playerHp),damage=Math.min(e.attack||0,s.enemyHp);s.playerHp+=heal;s.enemyHp-=damage;s.shield+=e.shield||0;s.enemyDebuff=Math.max(s.enemyDebuff,e.debuff||0);s.charge=Math.min(100,s.charge+(e.charge||0));s.phaseTurns++;s.history.push(r.id);s.score+=r.base;C.state.specialDiscovered=[...new Set([...C.state.specialDiscovered,r.id])];C.save();return{damage,heal,shield:e.shield||0,mult:1,chain:s.chain,broken:false}}
+root.SPECIAL014={research,apply};
+})(window);

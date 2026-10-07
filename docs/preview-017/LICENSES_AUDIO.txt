@@ -1,0 +1,33 @@
+Prototype 0.17 / 音源ライセンス
+0.16既存ファイルを無改変で維持。今回外部downloadなし。
+
+Story BGM: Beautiful City
+作者: Indieteur
+配布元: https://opengameart.org/content/beautiful-city
+取得元: https://opengameart.org/sites/default/files/Beautiful%20City.mp3
+ファイル: assets/audio/story_adventure.mp3
+ライセンス: CC0 1.0 Universal
+https://creativecommons.org/publicdomain/zero/1.0/
+取得・ライセンス確認日: 2026-10-05 JST（既存記録）
+クレジット不要、任意作者表記。Webゲーム/Pages/商用利用可。
+SHA-256: 4efb88cfd1484c22c00c92fde9d5cc1bfe849149ecde3a079f1bd33aad1f47d4
+
+Boss BGM: Battle Theme
+作者: Wolfgang_ (Theodore Kerr)
+配布元: https://opengameart.org/content/battle-theme-0
+ファイル: assets/audio/battle_theme.mp3
+ライセンス: CC0 1.0 Universal
+https://creativecommons.org/publicdomain/zero/1.0/
+公開準備確認日: 2026-10-05 JST（既存記録）。既存無改変、任意作者表記。
+
+雑魚BGM: meadow_adventure.wav
+既存10SE: select/deselect/success/fail/new_discovery/draw/shuffle/
+enemy_hit/player_hit/victory.wav
+作者: 理系ねこラボ向けCodex制作
+本作専用数式合成、外部サンプルなし / CC0 1.0。
+
+0.17追加: NEW sweep / unlock / impact補助（WebAudio runtime）
+作者: 理系ねこラボ向けCodex制作
+2026-10-07 JST、オリジナル波形数式合成・外部サンプルなし。
+CC0 1.0、クレジット不要。新規ダウンロード音声はない。
+

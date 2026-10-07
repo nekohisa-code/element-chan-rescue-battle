@@ -1,0 +1,12 @@
+/* The browser and seeded QA use these same combat and hand rules. */
+(function(root){
+ const symbols=r=>Object.entries(r.needs).flatMap(([s,n])=>Array(n).fill(s));
+ const canMake=(hand,r)=>{const c={};hand.forEach(s=>c[s]=(c[s]||0)+1);return Object.entries(r.needs).every(([s,n])=>(c[s]||0)>=n)};
+ const pick=(a,rng)=>a[Math.floor(rng()*a.length)];
+ function initialHand(recipes,pool,rng){const attacks=recipes.filter(r=>r.role==='ATTACK'&&symbols(r).length<=3);const target=pick(attacks,rng);let h=symbols(target);if(rng()<.65)h.push('H','H','O');while(h.length<8)h.push(pick(pool,rng));return h.slice(0,8)}
+ function ensureHand(hand,recipes,pool,rng){while(hand.length<8)hand.push(pick(pool,rng));if(recipes.some(r=>canMake(hand,r)))return hand.slice(0,8);const a=pick(recipes.filter(r=>symbols(r).length<=3),rng);const needed=symbols(a);return [...needed,...hand.slice(needed.length)].slice(0,8)}
+ function emergencyHand(recipes,pool,rng){const a=pick(recipes.filter(r=>r.role==='ATTACK'&&symbols(r).length<=3),rng);let h=['H','H','O',...symbols(a)];while(h.length<8)h.push(pick(pool,rng));return h}
+ function applyRecipe(s,r,mult){const e=r.roleEffect;const healed=Math.min(e.heal||0,s.difficulty.playerHp-s.playerHp);s.playerHp+=healed;s.shield+=e.shield||0;s.nextDefense=Math.max(s.nextDefense||0,e.defense||0);s.enemyDebuff=Math.max(s.enemyDebuff||0,e.debuff||0);s.shuffles=Math.min(5,s.shuffles+(e.reroll||0));if(e.drawPool)s.drawPool=e.drawPool.filter(x=>s.symbols.includes(x));const attack=r.role==='ATTACK'?Math.round(e.attack*(s.attackBoost||1)*mult):0;if(r.role==='ATTACK')s.attackBoost=1;if(e.boost)s.attackBoost=Math.max(s.attackBoost||1,e.boost);const label=[attack?`ATTACK ${attack}`:'',e.heal?`LAB RECOVER +${healed}`:'',e.shield?`SHIELD +${e.shield}`:'',e.defense?`DEFENSE ${Math.round(e.defense*100)}% CUT`:'',e.debuff?`敵NEXT ${Math.round(e.debuff*100)}% CUT`:'',e.reroll?'REROLL +1':'',e.swap?`${e.swap}枚交換`:'',e.drawPool?'補充候補を絞る':'',e.boost?'NEXT ATTACK ×1.15':''].filter(Boolean).join(' / ');return {attack,healed,shield:e.shield||0,label}}
+ function receiveAttack(s,amount){const adjusted=Math.round(amount*(1-(s.nextDefense||0))*(1-(s.enemyDebuff||0)));s.nextDefense=0;s.enemyDebuff=0;const blocked=Math.min(s.shield,adjusted);s.shield-=blocked;const dealt=adjusted-blocked;s.playerHp=Math.max(0,s.playerHp-dealt);return {dealt,blocked,reduced:amount-adjusted}}
+ root.BATTLE_ENGINE={symbols,canMake,pick,initialHand,ensureHand,emergencyHand,applyRecipe,receiveAttack};
+})(typeof window!=='undefined'?window:globalThis);

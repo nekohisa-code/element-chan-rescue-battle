@@ -1,0 +1,1 @@
+(function(root){'use strict';const prefix='element017-preview:',store=root.localStorage;root.PREVIEW_STORAGE017=Object.freeze({getItem(key){return store.getItem(prefix+key)},setItem(key,value){store.setItem(prefix+key,value)},removeItem(key){store.removeItem(prefix+key)}});})(window);

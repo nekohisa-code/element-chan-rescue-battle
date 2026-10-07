@@ -1,0 +1,31 @@
+(function(root){'use strict';
+const D=root.STAGE_DATA;
+const profiles={H:{firstPerson:'僕',core:'好奇心・発案・先に動きやすい'},O:{firstPerson:'私',core:'活発・責任感・Hを落ち着かせる'},Ga:{firstPerson:'ボク',core:'明るい好奇心・試したがる・やりすぎる'},In:{firstPerson:'僕',core:'柔らかい・支える・一人で頑張りすぎる'},Sn:{firstPerson:'俺',core:'温かい職人・面倒見・一人で直そうとする'}};
+const stories={
+1:{before:[['H','Oちゃん！ Gaちゃん、なんか様子がおかしくない？'],['O','うん。さっきからあれこれ試して、全然落ち着かないみたい。'],['H','このままじゃ大変だよ。助けよう！'],['O','うん。でもHちゃん、慌てないで。まず様子を見よう。']],after:[['Ga','ごめん。あれもこれも試したくなって、止まれなくなってたみたい。'],['H','戻ってよかった！'],['O','もう大丈夫そうだね。'],['Ga','うん！ ボクも一緒に行く！']]},
+2:{before:[['H','あれ？ 向こうに誰かいるよ。'],['Ga','あっ、Inちゃんだ！……でも、なんか様子がおかしい。'],['O','ずっと一人で何かやってるね。声をかけても気づいてないみたい。'],['H','Inちゃん！ 聞こえる？'],['In','まだ……まだやらなくちゃ。こっちも、あっちも……。'],['Ga','Inちゃん、頑張りすぎてるよ！'],['O','このままじゃもっと疲れちゃう。みんなで止めよう。'],['H','うん！ Inちゃんを助けよう！']],after:[['In','……あれ？ 僕、ずっと一人でやろうとしてたの？'],['Ga','うん。呼んでも全然止まらなかったよ。'],['In','そっか……。助けてくれてありがとう。'],['H','困ったときは、みんなでやればいいんだよ！'],['O','そうだね。一人で全部やらなくていいよ。'],['In','うん。じゃあ僕も一緒に行くよ。']]},
+3:{before:[['In','みんな、ちょっと待って。向こうから大きな音がするよ。'],['H','ほんとだ！ 何してるんだろう？'],['Ga','あっ！ Snちゃんだ！'],['O','でも、ちょっと様子がおかしいね。'],['Sn','ここも直す！ あっちも直す！ まだ終わってないぞ！'],['Ga','Snちゃん！ もう十分だよ！'],['Sn','まだだ！ 俺が全部直さないと！'],['In','このままじゃSnちゃんの方が疲れちゃうよ。'],['H','じゃあ、今度は僕たちがSnちゃんを助けよう！'],['O','うん。みんなで行こう！']],after:[['Sn','……ふぅ。やっと止まれたか。'],['In','Snちゃん、大丈夫？'],['Sn','ああ。悪かったな。何でも俺一人で直そうとしてたみたいだ。'],['Ga','今度はボクたちにも手伝わせてよ！'],['Sn','ははっ、そうだな。全部一人でやる必要はないか。'],['H','じゃあSnちゃんも一緒に行こう！'],['Sn','おう。俺も付き合うぞ。']]}}
+;
+for(const [s,n,no,tint] of [['Ga','ガリウム',31,'#dbe8ff'],['In','インジウム',49,'#dce8ff'],['Sn','スズ',50,'#e7eff7']]) D.elements[s]={symbol:s,name:n,atomicNumber:no,tint,image:`assets/characters/${s}.png`};
+for(const s of ['Ne','Ar']){const p=D.supports.find(p=>p.id===s);p.asset=`assets/characters/${s}.png`;p.portraitClass='';}
+const specs=[['Ga','試しすぎの火花','守り・支援でためこみ停止',[{name:'飛びはねる火花',damage:7},{name:'試したくなる',damage:0,energyRise:8},{name:'光の大波',damage:16}]],['In','がんばりシールド','盾を通す技で助けよう',[{name:'がんばりシールド',damage:4,guard:8},{name:'背負いすぎの波',damage:10},{name:'ひと息',damage:0}]],['Sn','修理に夢中','強い一撃には守りを',[{name:'工具の音',damage:7},{name:'修理の構え',damage:0,guard:6},{name:'全力の修理',damage:18}]]];
+for(const [id,name,hint,actions] of specs){const e=D.elements[id];D.bosses.push({id,symbol:id,element_jp:e.name,atomic_no:e.atomicNumber,asset:e.image,behavior:name,actions,support_unlock:id,gimmick:{name,hint,rule:'戦闘上の固有ルール。実際の化学的性質ではありません。'}});D.supports.push({id,symbol:id,element_jp:e.name,atomic_no:e.atomicNumber,asset:e.image,label:{Ga:'ひらめきのエール',In:'そっと支える光',Sn:'みんなの修理'}[id],supportRole:{Ga:'攻撃支援型',In:'回復型',Sn:'防御型'}[id],supportHint:{Ga:'攻撃と次の技を強化',In:'HPを立て直す',Sn:'盾と軽減で守る'}[id],science:'金属元素',...({Ga:{attack:18,boost:1.2},In:{heal:26},Sn:{shield:24,defense:.3}}[id])});}
+const recipes=[
+['GaN','窒化ガリウム',{Ga:1,N:1},'special','窒化物','ATTACK',{attack:23},'https://pubchem.ncbi.nlm.nih.gov/compound/Gallium_nitride'],
+['Ga2O3','酸化ガリウム(III)',{Ga:2,O:3},'oxide','酸化物','DEFENSE',{defense:.4},'https://pubchem.ncbi.nlm.nih.gov/compound/Gallium_III_oxide'],
+['GaCl3','塩化ガリウム(III)',{Ga:1,Cl:3},'chloride','塩化物','ATTACK',{attack:25},'https://pubchem.ncbi.nlm.nih.gov/compound/Gallium-chloride'],
+['In2O3','酸化インジウム(III)',{In:2,O:3},'oxide','酸化物','SHIELD',{shield:21},'https://pubchem.ncbi.nlm.nih.gov/summary/summary.cgi?cid=150905'],
+['InCl3','塩化インジウム(III)',{In:1,Cl:3},'chloride','塩化物','ATTACK',{attack:25},'https://pubchem.ncbi.nlm.nih.gov/compound/Trichloroindigane'],
+['SnO2','酸化スズ(IV)',{Sn:1,O:2},'oxide','酸化物','DEFENSE',{defense:.35},'https://www.ncbi.nlm.nih.gov/books/NBK599937/table/ch4.tab1/?report=objectonly'],
+['SnCl2','塩化スズ(II)',{Sn:1,Cl:2},'chloride','塩化物','UTILITY',{debuff:.25},'https://pubchem.ncbi.nlm.nih.gov/compound/tin%20dichloride'],
+['SnCl4','塩化スズ(IV)',{Sn:1,Cl:4},'chloride','塩化物','ATTACK',{attack:28},'https://pubchem.ncbi.nlm.nih.gov/compound/tin%20%28IV%29%20chloride'],
+['SnS2','硫化スズ(IV)',{Sn:1,S:2},'sulfide','硫化物','ATTACK',{attack:24},'https://pubchem.ncbi.nlm.nih.gov/compound/Tin-sulfide-_SnS2']
+].map(([formula,name,needs,compoundType,chemicalClass,role,roleEffect,source])=>({id:'012-'+formula,formula,name,needs,compoundType,chemicalClass,role,roleEffect,source,tier:1,base:160,family:chemicalClass,effect:'rescue',note:'戦闘効果はゲーム上のルールです。実際に混ぜたり飲食したりしないでください。'}));
+D.compounds.push(...recipes);D.additions012=recipes;
+D.stageDefinitions.forEach((d,i)=>{d.basePool=d.pool.slice();d.baseSymbols=d.symbols.slice();d.bosses=[['Ga','In','Sn'][i]];d.name=['Gaちゃんをすくおう','Inちゃんをすくおう','Snちゃんをすくおう'][i];});
+const elementScience={
+H:'最も軽い元素です。水や多くの有機物に含まれています。',C:'ダイヤモンドや黒鉛をつくる元素です。生き物の体にある多くの物質にも含まれます。',N:'空気の約8割を占める窒素ガスをつくります。たんぱく質にも含まれる元素です。',O:'空気中の酸素ガスや水に含まれます。多くの生き物の呼吸に必要です。',Na:'銀白色の金属です。食塩にはナトリウムのイオンが含まれます。',Mg:'軽い金属で、合金に利用されます。植物の葉緑素にも含まれます。',Al:'軽い金属で、缶や飛行機の材料に使われます。表面に酸化物の膜をつくります。',S:'単体は黄色い固体です。たんぱく質などにも含まれます。',Cl:'塩素ガスをつくる元素です。食塩には塩化物イオンとして含まれます。',Ca:'骨や歯、石灰石などに含まれる元素です。単体は金属です。',Fe:'鉄は建物や道具に広く使われる金属です。鋼は鉄を主成分とする合金です。',Cu:'赤みのある金属です。電気をよく通し、電線などに使われます。',He:'軽い希ガスで、ふつうの条件では反応しにくい元素です。気球や冷却の用途があります。',Ne:'希ガスの一つです。ネオンの放電管は赤橙色に光ります。',Ar:'空気に少量含まれる希ガスです。溶接などで金属を空気から守る用途があります。',Li:'軽い金属です。リチウムを含む材料が充電池に使われます。',K:'カリウムはアルカリ金属です。そのイオンは生き物の体で重要な働きをします。',Ag:'銀は光沢のある金属です。装飾品や電気部品などに使われます。',Xe:'キセノンは希ガスの一つです。特別なランプなどに使われます。',Ga:'約30℃で融ける金属です。ガリウムを含む化合物は半導体材料に使われます。',In:'柔らかい銀白色の金属です。インジウムを含む酸化物材料は画面の透明な電極に使われます。',Sn:'スズは柔らかい金属です。めっきや、金属をつなぐはんだの材料に使われます。'};
+const compoundFacts={H2O:'常温では液体で、氷や水蒸気にもなります。',CO2:'常温で気体です。植物は光合成で二酸化炭素を使います。',NaCl:'食塩の主成分です。固体ではイオンが規則正しく並びます。',CH4:'天然ガスの主成分です。常温では気体です。',NH3:'常温では気体です。肥料をつくる材料にもなります。',CaCO3:'石灰石や貝殻の主成分です。',NaHCO3:'重曹とも呼ばれる物質です。',GaN:'LEDや電力を制御する半導体の材料に利用されます。',Ga2O3:'ガリウムの酸化物で、半導体材料として研究されています。',GaCl3:'ガリウムと塩素からなる塩化物です。',In2O3:'透明な電極に使う材料のもとにもなる酸化物です。',InCl3:'インジウムと塩素からなる塩化物です。',SnO2:'自然界ではスズの鉱石である錫石の主成分です。',SnCl2:'スズと塩素からなる塩化物です。',SnCl4:'SnCl2とはスズと塩素の数比が異なる化合物です。',SnS2:'スズと硫黄からなる硫化物です。'};
+for(const r of D.compounds){const names=Object.keys(r.needs).map(s=>D.elements[s].name).join('・');r.science=compoundFacts[r.formula]||`${names}からなる化合物です。式は${Object.entries(r.needs).map(([s,n])=>s+':'+n).join('、')}の原子の数比を表します。`;}
+root.STORY_DATA={profiles,stories,elementScience,recipes,rescueOrder:['Ga','In','Sn'],source:'今回のユーザー添付実行指示。台詞は原文。4コマ正本には書き込まない。'};
+})(typeof window!=='undefined'?window:globalThis);

@@ -1,0 +1,4 @@
+(function(root){
+ const motifs={oxide:'M12 68Q-8 40 16 8q-3 22 13 28Q51 3 53 42q0 28-41 26Z',chloride:'M3 12 33 4 58 25 48 65 12 76 0 43ZM3 12 48 65M33 4 12 76M0 43 58 25',hydroxide:'M28 3Q72 53 47 71 13 93 4 56 1 39 28 3ZM8 57q22 14 39-2',sulfide:'M30 3 59 24 50 63 26 77 2 53 3 23ZM3 23 50 63M59 24 2 53M30 3 26 77',other:'M29 4 38 24 59 28 43 43 47 67 29 55 10 67 15 43 0 28 22 24Z'};
+ root.makeEmblem=(type,id)=>`<svg class="type-emblem" viewBox="0 0 160 80" aria-hidden="true"><path d="M12 1H148M158 12V68M148 79H12M2 68V12" fill="none" stroke="#ffffff6a" stroke-width="1"/><path d="${motifs[type]||motifs.other}" fill="#ffffff0c" stroke="#ffffff32" stroke-width="1.5" transform="translate(49 0)"/><path d="M12 14h12m-6-6v12M136 64h12m-6-6v12" stroke="#ffffff65"/><path d="M6 74 154 6" stroke="#ffffff10" stroke-width="7"/></svg>`;
+})(window);

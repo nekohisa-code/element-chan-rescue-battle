@@ -1,0 +1,65 @@
+.game{}
+.battle-hud{}
+#enemy-panel{}
+#enemy-avatar{}
+.enemy-top{}.enemy-title strong{}
+#enemy-panel>.hp-line{}
+#enemy-panel>.hp-line label{}#enemy-hp-text{}
+#enemy-panel>.hp-line progress{}
+#enemy-receipt{font-weight:900}
+#rescue-chance{font-weight:900;color:#8b4d00}
+#rescue-chance:empty{}
+.player{}.player>.hp-line,.player>.player-stats,.player>.charge,.player>#role-receipt,.player>#player-receipt{}
+.player>.hp-line{}.player>.hp-line b{}.player>.hp-line progress{}
+.player>.charge{}.player>.player-top{}
+.player>.support-row{border-left:1px solid #ffffff35;text-align:center}
+.player #support-portrait{}.player #support-label b{}.player #support-label small{}.player .support-row>span:nth-child(2){}
+.player #special-button{}
+.action-bar{}#message{}
+.recipe-list{}.recipe-card{}.recipe-card>.role-mark{}.recipe-card>strong{}.recipe-card>.compound-name{}.recipe-card>.type-role{}.recipe-card>.effect-summary{}
+.recipe-card[data-recommended=true]{border-color:#ffcd62;box-shadow:inset 0 0 0 2px #fff2,0 0 6px #ffd86b66}
+.recipe-card[data-recommended=true] .role-mark:after{content:'推';color:#ffd978}
+#presentation{background:#17264d22}
+#presentation.composition{display:block}
+#presentation.composition #presentation-card{position:absolute;left:50%;top:var(--reaction-y);translate:-50% -50%;padding:12px;width:min(82vw,350px);min-height:155px}
+#presentation.composition #presentation-card p{margin:5px 0;font-size:12px;line-height:1.4}
+#presentation.composition #presentation-card strong{font-size:34px}
+#presentation.composition #presentation-card small{font-size:11px}
+#presentation.composition #presentation-card.forming{visibility:hidden}
+#reaction-core{display:none;position:absolute;left:50%;top:var(--reaction-y);translate:-50% -50%;width:108px;height:108px;border:4px double #9af7ff;border-radius:32%;background:radial-gradient(circle,#f7fdff,#75deee 38%,#1f567b 80%);box-shadow:0 0 calc(15px + var(--level,0)*35px) #9cf8ff;color:#093a57;place-content:center;text-align:center;z-index:23}
+#reaction-core span{font-size:10px;font-weight:900}#reaction-core b{display:block;font-size:25px}#presentation.composition #reaction-core.collecting{display:grid}
+.core-pulse{animation:core-pulse .18s ease-out}.core-flash{filter:brightness(1.7)}
+.near-rescue{background:radial-gradient(ellipse,#ffdd8555,transparent 75%)}.near-rescue img{filter:drop-shadow(0 0 8px #fff2bb) saturate(.9)}
+.weak-impact{animation:weak-impact .6s}.break-reaction{animation:weak-impact .7s;filter:brightness(1.3)}
+@keyframes core-pulse{50%{scale:1.12}}@keyframes weak-impact{25%{transform:translateX(-7px)}50%{transform:translateX(6px);filter:brightness(1.25)}75%{transform:translateX(-3px)}}
+@media(max-width:600px){
+ .game{}
+ .battle-hud{}
+ #enemy-panel{}
+ #enemy-avatar{}
+ .enemy-title strong{}.enemy-top{}
+ #enemy-panel>.hp-line,#enemy-panel>.enemy-shield,#weakness,#resistance,#enemy-panel>.next,#rescue-chance{}
+ #enemy-panel>.hp-line{}
+ #enemy-panel>.hp-line label{}
+ #enemy-hp-text{}
+ #enemy-panel>.hp-line progress{}
+ #enemy-receipt{}
+ #rescue-chance{}.enemy-shield{}
+ #weakness,#resistance{}.next{min-height:34px;padding:3px}.next b{font-size:10px;line-height:12px}
+ .player{}.player>.hp-line,.player>.player-stats,.player>.charge,.player>#role-receipt,.player>#player-receipt{}
+ .player>.hp-line b{}.player>.hp-line progress{}.player>.player-top{}
+ .player>.charge{}.player-stats{}.player .receipt{}
+ .recipe-list{}.recipe-card{}
+ .recipe-card>.role-mark{letter-spacing:-.5px}.recipe-card>strong{}.recipe-card>.compound-name{letter-spacing:-.4px}.recipe-card>.type-role{}.recipe-card>.effect-summary{}
+ .element-card{}.element-card img{}
+ .identity-badge{}.identity-badge strong{}.identity-badge small{}
+ .action-bar{}.support-row{}.support-row button{}
+ #support-portrait{}#support-label b{}#support-label small{}.support-row{}
+ #message{text-overflow:ellipsis}
+ .actions button{}.actions{}
+ #presentation.composition #presentation-card{width:300px;padding:9px;min-height:152px}
+ #presentation.composition #presentation-card strong{font-size:30px}
+ #presentation-card>.support-image{width:150px;height:156px}
+}
+@media(max-height:730px) and (max-width:600px){.game{}.game-active{}}
+@media(prefers-reduced-motion:reduce){.core-pulse,.weak-impact,.break-reaction{animation:none}}

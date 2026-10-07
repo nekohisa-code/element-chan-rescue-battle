@@ -1,0 +1,66 @@
+/* Overlay effects occupy no normal-flow space. */
+.game{}
+.battle-hud{}
+#enemy-panel{}
+#enemy-avatar{}
+.enemy-top{}.enemy-title{}.enemy-title strong{}.enemy-title small{}
+#enemy-gimmick{}
+#enemy-panel .hp-line{}
+#enemy-panel .hp-line label{}
+#enemy-hp-text{text-align:left!important}
+#enemy-panel .hp-line progress{}
+.recipe-list{scroll-snap-type:x proximity}
+.recipe-card{}
+.recipe-card>.role-mark{}
+.recipe-card>.compound-name{text-align:center}
+.recipe-card>.type-role{opacity:.85}
+.recipe-card>.reason-summary{}
+.recipe-card>.effect-summary{}
+.recommend-tag{}
+.player>.hp-line progress{}.player #support-portrait{}
+#break-label{display:inline-flex;gap:4px;align-items:center;vertical-align:middle;font-weight:900}
+.break-dots{display:inline-flex;gap:3px}.break-dots i{width:9px;height:9px;display:inline-block;border:1px solid #8195b8;border-radius:50%;background:#dde5ef}
+.break-dots i.lit{background:#ffbc30;box-shadow:0 0 8px #ffb721;border-color:#ff9b00}
+.break-flash{animation:break-step .65s ease-out}.break-impact{animation:break-impact 1.3s ease-out}
+@keyframes break-step{35%{transform:scale(1.13);filter:brightness(1.5)}}@keyframes break-impact{20%,55%{box-shadow:inset 0 0 34px #ffd650,0 0 15px #ffad33}40%{filter:brightness(1.2)}}
+#presentation.composition #presentation-card{top:var(--reaction-y);min-height:0;width:min(88vw,480px);padding:16px}
+#presentation.composition #presentation-card strong{font-size:46px}
+#presentation.composition #presentation-card .completion-name{font-size:30px!important;line-height:1.25!important;font-weight:900;margin:8px 0!important;color:#fffbd8}
+#presentation.composition #presentation-card p:not(.completion-name){font-size:12px}
+#presentation.composition #reaction-core{display:none!important}
+#presentation[data-phase=absorbing] #presentation-card.forming{visibility:visible;border-style:dashed;background:#172644de}
+#presentation[data-phase=absorbing] #presentation-card.forming>*{opacity:.22}
+#presentation[data-phase=flying] #presentation-card{visibility:hidden}
+.flight-token{position:fixed;z-index:25;width:76px;height:76px;display:grid;place-items:center;font-size:46px;line-height:1;background:radial-gradient(circle,#fff5d0,#ff8158);border:4px double #ffeeb3;border-radius:22px;color:#6e2430;box-shadow:0 0 25px #ffa854}
+.flight-token.ATTACK{border-radius:16px 16px 36px 36px;background:linear-gradient(135deg,#ffe7a0,#e74f42);color:#8a1630}
+.flight-token.DEFENSE,.flight-token.SHIELD{border-radius:10px 10px 35px 35px;background:linear-gradient(135deg,#d4f4ff,#447ab9)}
+.flight-token.HEAL{width:56px;height:70px;border-radius:14px 14px 26px 26px;background:linear-gradient(transparent 15%,#dffff5 15%,#54d8aa 55%,#168b77);border-color:#c8fff0;color:#edfff8;box-shadow:0 0 30px #76ffd8}
+.flight-token.HEAL:before{content:'';position:absolute;top:-9px;width:27px;height:13px;border-radius:5px;background:#ffe1a2;border:2px solid #ad6c36}
+.battle-number{position:absolute;left:50%;top:45%;translate:-50% -50%;z-index:5;white-space:nowrap;font-weight:900;font-size:23px;color:white;padding:6px 12px;border-radius:10px;text-shadow:0 1px 2px #000;box-shadow:0 4px 18px #18243b77;pointer-events:none;animation:battle-number 1.8s both}
+.battle-number.damage{background:#913348}.battle-number.healing{background:#167965}
+@keyframes battle-number{0%{opacity:0;transform:scale(.7)}15%,80%{opacity:1;transform:scale(1)}100%{opacity:0;transform:translateY(-18px)}}
+.guard-hit:after{content:'🛡 🛡';position:absolute;inset:35% 5% auto;text-align:center;font-size:34px;filter:drop-shadow(0 0 10px #87deff);pointer-events:none;z-index:4;animation:break-step .7s}
+@media(min-width:1500px){.recipe-list{}}
+@media(max-width:600px){
+ .game{}
+ .battle-hud{}
+ #enemy-avatar{}
+ #enemy-panel{}
+ #enemy-panel>.hp-line,#enemy-panel>.enemy-shield,#weakness,#resistance,#enemy-panel>.next,#rescue-chance{}
+ .enemy-top{}.enemy-title strong{}.enemy-title small{}
+ #enemy-panel .hp-line{}#enemy-hp-text{}
+ .enemy-shield{}#break-label{gap:2px;flex-wrap:wrap}.break-dots{gap:2px}.break-dots i{width:6px;height:6px}
+ .recipe-list{}.recipe-card{}
+ .recipe-card>.role-mark{}
+ .recipe-card>strong{}
+ .recipe-card>.compound-name{}
+ .recipe-card>.type-role{letter-spacing:-.4px}
+ .recipe-card>.effect-summary{}
+ .recipe-card>.reason-summary{}
+ #presentation.composition #presentation-card{padding:12px;width:350px;max-width:92vw}
+ #presentation.composition #presentation-card strong{font-size:40px}
+ #presentation.composition #presentation-card .completion-name{font-size:25px!important}
+ .battle-number{font-size:15px;padding:5px;max-width:98%;white-space:normal;text-align:center}
+ .player .hp-line{}.player .hp-line b{}
+}
+@media(prefers-reduced-motion:reduce){.break-flash,.break-impact,.battle-number{animation:none}}
